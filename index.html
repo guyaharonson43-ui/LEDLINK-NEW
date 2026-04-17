@@ -1418,10 +1418,37 @@ const ProductModal = ({ prod, onClose, onAddToCart }) => {
 
 /* ── PRODUCT CARD ── */
 const ProductCard = ({ prod, idx = 0, onAddToCart, onSelect }) => {
+  const isPro = PRO_CATS.has(prod.category);
+  if (isPro) {
+    /* ── כרטיסיה מקצועית (פרופילים / סטריפ / ספקי מתח) ── */
+    return (
+    <div onClick={() => onSelect(prod)} className="prod-card rounded-lg overflow-hidden cursor-pointer group border border-slate-700 bg-slate-900 hover:border-gold transition-colors">
+      <div className="overflow-hidden relative flex items-center justify-center bg-slate-800" style={{height:'180px'}}>
+        <img src={catalogImg(prod, idx)} alt={prod.name} loading="lazy"
+             className="max-h-36 max-w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+             onError={e => { e.target.style.display='none'; }}/>
+        <div className="absolute top-2 right-2 bg-gold text-[9px] text-black font-black uppercase tracking-widest px-2 py-0.5 rounded">
+          מקצועי
+        </div>
+      </div>
+      <div className="p-3">
+        <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">{prod.category}</p>
+        <h4 className="font-heading font-bold text-sm text-white mb-1 leading-tight group-hover:text-gold transition-colors line-clamp-2">{prod.name}</h4>
+        {prod.desc && (
+          <p className="text-slate-400 text-[11px] leading-relaxed mb-3 line-clamp-2">{prod.desc}</p>
+        )}
+        <div onClick={e => e.stopPropagation()}>
+          <AddToCartBtn onClick={() => onAddToCart(prod)}/>
+        </div>
+      </div>
+    </div>
+    );
+  }
+
+  /* ── כרטיסיה רגילה (גופי תאורה וכו׳) ── */
   return (
   <div onClick={() => onSelect(prod)} className="prod-card bg-white border border-border rounded-lg overflow-hidden cursor-pointer group">
     <div className="overflow-hidden relative bg-bg-soft flex items-center justify-center p-3" style={{height:'220px'}}>
-      {/* Show real product photo; fallback to lifestyle if missing/broken */}
       <img src={catalogImg(prod, idx)} alt={prod.name} loading="lazy"
            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
            onError={e => {
@@ -1567,6 +1594,10 @@ const StripFilters = ({ filters, setFilters, count }) => {
 };
 
 /* ── CATALOG ── */
+
+/* קטגוריות מקצועיות (B2B) — מוסתרות כברירת מחדל */
+const PRO_CATS = new Set(['פרופילים', 'סטריפ LED - LedLink', 'ספקי מתח']);
+
 const CATS_LIST = [
   'פרופילים','סטריפ LED - LedLink','ספקי מתח',
   'צמודי תקרה פנים','צמודי תקרה דקורטיבי','שקועי תקרה פנים','צמודי תקרה ספוט',
@@ -1746,14 +1777,18 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
   const [visible, setVisible] = useState(16);
   const [psF,     setPsF]     = useState({...INIT_PS});
   const [stripF,  setStripF]  = useState({...INIT_STRIP});
+  const [proMode, setProMode] = useState(false);  /* false = לקוח קצה, true = מקצועי */
 
   const isPSMode    = cat === 'ספקי מתח';
   const isStripMode = cat === 'סטריפ LED - LedLink';
 
   useEffect(() => { if (initCat) { setCat(initCat); setPsF({...INIT_PS}); setStripF({...INIT_STRIP}); } }, [initCat]);
-  useEffect(() => { setVisible(16); }, [cat, search, psF, stripF]);
+  useEffect(() => { setVisible(16); }, [cat, search, psF, stripF, proMode]);
 
   function matchesFilters(p) {
+    /* במצב לקוח קצה — מסתירים קטגוריות מקצועיות */
+    if (!proMode && PRO_CATS.has(p.category)) return false;
+    /* במצב מקצועי עם קטגוריה נבחרת — מסנן לפי קטגוריה */
     if (cat !== 'הכל' && p.category !== cat) return false;
     if (search) {
       const q = search.toLowerCase();
@@ -1814,19 +1849,43 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
           </div>
         </div>
 
+        {/* B2C / Pro toggle */}
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-sm font-bold text-ink">תצוגה:</span>
+          <div className="flex rounded-lg border border-border overflow-hidden text-sm font-bold">
+            <button
+              onClick={() => { setProMode(false); setCat('הכל'); resetFilters(); }}
+              className={`px-4 py-2 transition-colors ${!proMode ? 'bg-ink text-white' : 'bg-white text-muted hover:text-ink'}`}>
+              🏠 לקוח קצה
+            </button>
+            <button
+              onClick={() => { setProMode(true); setCat('הכל'); resetFilters(); }}
+              className={`px-4 py-2 border-r border-border transition-colors ${proMode ? 'bg-slate-900 text-gold' : 'bg-white text-muted hover:text-ink'}`}>
+              ⚙ איש מקצוע
+            </button>
+          </div>
+          {proMode && (
+            <span className="text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+              פרופילים · סטריפ LED · ספקי מתח
+            </span>
+          )}
+        </div>
+
         {/* Category tabs */}
         <div className="relative mb-8">
           <div className="flex gap-2 overflow-x-auto pb-3 no-scroll">
-            {['הכל', ...CATS_LIST].map(c => (
+            {['הכל', ...CATS_LIST.filter(c => proMode ? PRO_CATS.has(c) : !PRO_CATS.has(c))].map(c => (
               <button key={c}
                 onClick={() => { setCat(c); resetFilters(); }}
                 className={`shrink-0 px-4 py-2 text-sm font-bold rounded border transition-colors whitespace-nowrap
-                  ${cat === c ? 'bg-ink text-white border-ink' : 'bg-white text-ink border-border hover:border-gold hover:text-gold'}`}>
+                  ${cat === c
+                    ? (proMode ? 'bg-slate-900 text-gold border-slate-700' : 'bg-ink text-white border-ink')
+                    : (proMode ? 'bg-white text-slate-600 border-border hover:border-slate-700 hover:text-slate-900' : 'bg-white text-ink border-border hover:border-gold hover:text-gold')}`}>
                 {c}
               </button>
             ))}
           </div>
-          {/* fade edge — hints there are more tabs */}
+          {/* fade edge */}
           <div className="absolute top-0 left-0 h-[calc(100%-12px)] w-10 bg-gradient-to-r from-bg-soft to-transparent pointer-events-none"/>
         </div>
 
@@ -1903,12 +1962,6 @@ const ROOMS = [
     cats: ['צמודי תקרה פנים','צמודי תקרה דקורטיבי','פרופילים'] },
   { id:'entry',   icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M13 3h7v18h-7"/><path d="M3 12h10m0 0-3-3m3 3-3 3"/><rect x="3" y="3" width="10" height="18" rx="1"/><circle cx="10" cy="12" r="1" fill="currentColor" stroke="none"/></svg>, label:'כניסה',
     cats: ['צמודי תקרה פנים','צמודי תקרה דקורטיבי','פרופילים','צמודי קיר פנים'] },
-];
-/* קטגוריות מקצועיות/מסחריות — מוסתרות מקטלוג הבית, מוצגות רק במצב מקצועי */
-const PRO_CATS = [
-  'ספקי מתח',           /* power supplies */
-  'סטריפ LED - LedLink', /* LED strips — pro item */
-  'נורות LED',           /* replacement bulbs */
 ];
 
 /* Categories that are legitimately outdoor/garden */
@@ -2763,9 +2816,9 @@ const _F = {
    כל תמונה חייבת להציג גוף תאורה בולט בחלל! */
 const MOOD_IMG = {
   salon:   {
-    warm:     'salon-hero.jpg.jpg',                                                                              /* LED cove + pendants — warm */
-    neutral:  _F.indirectLR,                                                                                      /* indirect LED living room — clean */
-    dramatic: _F.coveSalon,                                                                                       /* LED cove ceiling — dramatic */
+    warm:     'salon-hero.jpg.jpg',                                                                              /* ✅ תמונה שלך — נשאר */
+    neutral:  'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',   /* סקנדינבי מינימליסטי — אושר */
+    dramatic: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80',   /* סלון כהה עם תאורת מבטא — אושר */
   },
   kitchen: {
     warm:     'kitchen.jpg.jpeg',                                                                                 /* pendant lights — warm */
@@ -2799,19 +2852,19 @@ const MOOD_IMG = {
 const ROOM_MOOD_INSPO = {
   salon: {
     warm: [
-      { img:_F.coveSalon,  cap:'ככה מרגיש לחזור הביתה' },
-      { img:_F.nicheSalon,  cap:'ערב שלא רוצים שייגמר' },
-      { img:_F.indirectLR,  cap:'אור שמחבק את החלל' },
+      { img:'salon-hero.jpg.jpg',  cap:'ככה מרגיש לחזור הביתה' },
+      { img:_F.coveSalon,           cap:'ערב שלא רוצים שייגמר' },
+      { img:_F.nicheSalon,          cap:'אור שמחבק את החלל' },
     ],
     neutral: [
-      { img:_F.indirectLR,  cap:'מרחב שנושם' },
-      { img:_F.coveSalon,   cap:'פשוט. נקי. מושלם.' },
-      { img:_F.nicheSalon,  cap:'הבית שתמיד חלמת עליו' },
+      { img:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',  cap:'מרחב שנושם' },
+      { img:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',     cap:'פשוט. נקי. מושלם.' },
+      { img:_F.indirectLR,                                                                                    cap:'הבית שתמיד חלמת עליו' },
     ],
     dramatic: [
-      { img:_F.nicheSalon,  cap:'הרגע שבו אורחים נעצרים' },
-      { img:_F.coveSalon,   cap:'תאורה שמספרת סיפור' },
-      { img:_F.indirectLR,  cap:'לא רק סלון — חוויה' },
+      { img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80',  cap:'הרגע שבו אורחים נעצרים' },
+      { img:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',  cap:'תאורה שמספרת סיפור' },
+      { img:_F.nicheSalon,                                                                                    cap:'לא רק סלון — חוויה' },
     ],
   },
   kitchen: {
