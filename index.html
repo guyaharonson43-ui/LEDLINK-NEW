@@ -1324,45 +1324,22 @@ const ProductModal = ({ prod, onClose, onAddToCart }) => {
             <button onClick={onClose} aria-label="סגור פרטי מוצר" className="text-muted hover:text-ink transition-colors p-1 mt-1 shrink-0">{Ico.close}</button>
           </div>
 
-          {/* Product hero image */}
-          {SCHEMATIC_CATS.has(prod.category) ? (
-            /* Profiles/strips → lifestyle Unsplash + small product inset */
-            <div className="relative overflow-hidden" style={{height:'280px'}}>
-              <img
-                src={catalogImg(prod)}
-                alt={`${prod.category || prod.name} — תאורת אווירה`}
-                className="w-full h-full object-cover"
-                onError={e => { e.target.src='https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=700&q=80'; }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"/>
-              {prod.category && (
-                <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-[10px] font-bold uppercase tracking-widest text-ink px-3 py-1 rounded-full border border-white/50">
-                  {prod.category}
-                </span>
-              )}
-              <div className="absolute bottom-3 left-3 bg-white rounded-lg shadow-lg border border-white/70 p-1.5" style={{width:'80px',height:'80px'}}>
-                <img src={prod.img} alt={prod.name} className="w-full h-full object-contain"
-                     onError={e => { e.target.closest('div').style.display='none'; }}/>
-              </div>
-            </div>
-          ) : (
-            /* Fixtures (epsilon etc.) → actual product photo, or lifestyle if missing */
-            <div className="bg-bg-soft flex items-center justify-center p-8 min-h-[280px] relative overflow-hidden">
-              <img
-                src={catalogImg(prod)}
-                alt={prod.name}
-                className="max-h-64 max-w-full object-contain relative z-10"
-                onError={e => {
-                  const lifestyle = CATEGORY_LIFESTYLE_IMG[prod.category] || PROFILE_AMBIENT[0];
-                  if (e.target.src !== lifestyle) {
-                    e.target.src = lifestyle;
-                    e.target.className = 'w-full h-full object-cover absolute inset-0';
-                    e.target.closest('div').style.padding = '0';
-                  }
-                }}
-              />
-            </div>
-          )}
+          {/* Product hero image — real product photo for all categories */}
+          <div className="bg-bg-soft flex items-center justify-center p-8 min-h-[280px] relative overflow-hidden">
+            <img
+              src={catalogImg(prod)}
+              alt={prod.name}
+              className="max-h-64 max-w-full object-contain relative z-10"
+              onError={e => {
+                const lifestyle = CATEGORY_LIFESTYLE_IMG[prod.category] || PROFILE_AMBIENT[0];
+                if (e.target.src !== lifestyle) {
+                  e.target.src = lifestyle;
+                  e.target.className = 'w-full h-full object-cover absolute inset-0';
+                  e.target.closest('div').style.padding = '0';
+                }
+              }}
+            />
+          </div>
 
           <div className="p-6 space-y-6">
             {/* Description */}
@@ -1441,31 +1418,16 @@ const ProductModal = ({ prod, onClose, onAddToCart }) => {
 
 /* ── PRODUCT CARD ── */
 const ProductCard = ({ prod, idx = 0, onAddToCart, onSelect }) => {
-  const isSchematic = SCHEMATIC_CATS.has(prod.category);
   return (
   <div onClick={() => onSelect(prod)} className="prod-card bg-white border border-border rounded-lg overflow-hidden cursor-pointer group">
-    <div className={`overflow-hidden relative ${isSchematic ? '' : 'bg-bg-soft flex items-center justify-center p-3'}`} style={{height:'220px'}}>
-      {isSchematic ? (
-        <>
-          {/* Profiles/strips → lifestyle Unsplash */}
-          <img src={catalogImg(prod, idx)} alt={prod.name} loading="lazy"
-               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-               onError={e => { e.target.src=PROFILE_AMBIENT[idx % PROFILE_AMBIENT.length]; }}/>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"/>
-          <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm rounded p-1 shadow border border-white" style={{width:'48px',height:'48px'}}>
-            <img src={prod.img} alt="" className="w-full h-full object-contain"
-                 onError={e => { e.target.closest('div').style.display='none'; }}/>
-          </div>
-        </>
-      ) : (
-        /* Fixtures (epsilon etc.) → original product photo; fallback to lifestyle if broken */
-        <img src={catalogImg(prod, idx)} alt={prod.name} loading="lazy"
-             className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-             onError={e => {
-               const lifestyle = CATEGORY_LIFESTYLE_IMG[prod.category] || PROFILE_AMBIENT[idx % PROFILE_AMBIENT.length];
-               if (e.target.src !== lifestyle) { e.target.src = lifestyle; e.target.className = e.target.className.replace('object-contain','object-cover'); }
-             }}/>
-      )}
+    <div className="overflow-hidden relative bg-bg-soft flex items-center justify-center p-3" style={{height:'220px'}}>
+      {/* Show real product photo; fallback to lifestyle if missing/broken */}
+      <img src={catalogImg(prod, idx)} alt={prod.name} loading="lazy"
+           className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+           onError={e => {
+             const lifestyle = CATEGORY_LIFESTYLE_IMG[prod.category] || PROFILE_AMBIENT[idx % PROFILE_AMBIENT.length];
+             if (e.target.src !== lifestyle) { e.target.src = lifestyle; e.target.className = e.target.className.replace('object-contain','object-cover'); }
+           }}/>
       {prod.category && (
         <div className="absolute top-3 right-3 bg-white text-[10px] text-muted font-bold uppercase tracking-widest px-2 py-1 rounded border border-border">
           {prod.category}
@@ -2717,28 +2679,20 @@ const CATEGORY_LIFESTYLE_IMG = {
 /* Categories whose prod.img is a technical schematic / aluminum extrusion drawing —
    replace with lifestyle photo. All OTHER categories (fixtures from QLT etc.)
    keep their original prod.img which is a proper product photo. */
-const SCHEMATIC_CATS = new Set(['פרופילים', 'סטריפ LED - LedLink', 'ספקי מתח']);
+/* Categories whose product images are Epsilon technical schematics (-ps-).
+   Now empty — profiles/strips/drivers all have real photos from ledlink.co.il / qlt.it */
+const SCHEMATIC_CATS = new Set([]);
 
 /* Detects whether a product image URL is a technical schematic (not a real photo).
    Epsilon uses "-ps-" in the filename for plan/schematic images. */
 const isSchematicImg = (url) => !url || !url.trim() || url.includes('-ps-');
 
 /* Returns the display image for a product card / modal hero.
-   - Profiles & strips        → lifestyle Unsplash (prod.img = technical drawing)
-   - Fixtures with real photo → prod.img as-is (epsilon real photo, not ps)
-   - Fixtures with schematic or empty img → lifestyle Unsplash for that category */
+   All categories: show the real product photo when available,
+   fall back to a lifestyle image only if missing or schematic. */
 const catalogImg = (p, idx = 0) => {
   const fallback = CATEGORY_LIFESTYLE_IMG[p.category] || PROFILE_AMBIENT[idx % PROFILE_AMBIENT.length];
-  if (!SCHEMATIC_CATS.has(p.category)) {
-    /* Use real product photo only when it exists and is NOT a schematic */
-    return isSchematicImg(p.img) ? fallback : p.img;
-  }
-  /* Profile / strip → always lifestyle */
-  if (p.category === 'פרופילים') {
-    const img = homeImg(p, idx);
-    return img || CATEGORY_LIFESTYLE_IMG['פרופילים'] || PROFILE_AMBIENT[idx % PROFILE_AMBIENT.length];
-  }
-  return CATEGORY_LIFESTYLE_IMG[p.category] || PROFILE_AMBIENT[idx % PROFILE_AMBIENT.length];
+  return isSchematicImg(p.img) ? fallback : p.img;
 };
 
 /* Profiles that should NOT appear in certain rooms
