@@ -107,11 +107,11 @@
             body: ['Assistant', 'sans-serif'],
           },
           colors: {
-            gold: '#B8973A',
-            'gold-light': '#D4AF37',
-            'gold-dark': '#8B6914',
-            ink: '#1A1A1A',
-            'ink-soft': '#3D3D3D',
+            gold: '#C5A566',
+            'gold-light': '#D4B896',
+            'gold-dark': '#9E7A3F',
+            ink: '#0D0D0D',
+            'ink-soft': '#2E2E2E',
             muted: '#7A7A7A',
             border: '#E8E8E8',
             'bg-soft': '#F7F6F4',
@@ -125,7 +125,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Assistant', sans-serif; background: #fff; color: #1A1A1A; margin: 0; overflow-x: hidden; }
+    body { font-family: 'Assistant', sans-serif; background: #fff; color: #0D0D0D; margin: 0; overflow-x: hidden; }
     h1,h2,h3,h4,h5 { font-family: 'Heebo', sans-serif; }
 
     /* Mega Menu */
@@ -133,23 +133,23 @@
     .mega-item:hover .mega-panel { opacity: 1; pointer-events: auto; transform: translateY(0); }
     .mega-panel {
       position: absolute; top: 100%; right: 0;
-      background: #fff; border-top: 2px solid #B8973A;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.97); border-top: 2px solid #C5A566;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.10), 0 1px 0 rgba(0,0,0,0.04);
       padding: 32px 40px; min-width: 520px;
       opacity: 0; pointer-events: none;
-      transform: translateY(-8px);
-      transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+      transform: translateY(-6px);
+      transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
       z-index: 100;
     }
     .mega-link {
-      display: block; padding: 6px 0; color: #3D3D3D; font-size: 14px;
-      transition: color 0.15s; font-weight: 500;
-      border-bottom: 1px solid transparent;
+      display: block; padding: 7px 0; color: #2E2E2E; font-size: 14px;
+      transition: color 0.12s, padding-right 0.12s; font-weight: 500;
     }
-    .mega-link:hover { color: #B8973A; }
+    .mega-link:hover { color: #C5A566; padding-right: 4px; }
 
-    /* Header scroll shadow */
-    .header-scroll { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    /* Header scroll shadow — precise engineering line */
+    .header-scroll { box-shadow: 0 1px 0 rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04); }
 
     /* Category pill */
     .cat-pill { transition: all 0.18s; cursor: pointer; }
@@ -505,20 +505,20 @@ const Hero = ({ onHome, onPro }) => (
   <section className="relative h-[82vh] min-h-[520px] overflow-hidden bg-ink flex items-center">
     <div
       className="absolute inset-0 bg-cover bg-center"
-      style={{backgroundImage:"url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=80')", opacity:0.38}}
+      style={{backgroundImage:"url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1800&q=80')", opacity:0.45}}
     />
     <div className="absolute inset-0 bg-gradient-to-l from-ink/95 via-ink/60 to-transparent" />
 
     <div className="relative z-10 max-w-7xl mx-auto px-8 w-full">
       <div className="max-w-xl">
-        <span className="section-label text-gold-light">Partner מקצועי לתאורה</span>
+        <span className="section-label text-gold-light">חנות המפעל לתאורת LED · רחובות</span>
         <h1 className="font-heading font-black text-5xl md:text-6xl text-white leading-tight mt-2 mb-5">
-          תאורה שמגדירה<br/>
-          <span className="text-gold-light">את החלל שלך</span>
+          תאורה שאדריכלים<br/>
+          <span className="text-gold-light">מזמינים לבית שלך</span>
         </h1>
         <p className="text-gray-300 text-lg font-light leading-relaxed mb-5 max-w-md">
-          15 שנה בשטח. מלאי מדף מוכן לאיסוף. ייצור לפי דרישה — תוך שעות.<br/>
-          <span className="text-gold-light/90 font-medium">בוא שתה קפה, נייצר בינתיים.</span>
+          ישירות מהמפעל — בלי אמצעים. מלאי מדף מוכן לאיסוף, ייצור מותאם תוך שעות.<br/>
+          <span className="text-gold-light/90 font-medium">15 שנות ניסיון. תכנון איטלקי. ייצור ישראלי.</span>
         </p>
 
         {/* USP bullets — 3 quick value props */}
@@ -546,8 +546,8 @@ const Hero = ({ onHome, onPro }) => (
           </button>
           <button onClick={onPro}
             className="group flex flex-col items-center gap-1 border-2 border-white/40 hover:border-gold hover:bg-white/5 text-white px-8 py-4 transition-colors text-right">
-            <span className="font-heading font-black text-base tracking-wide">אני מקצוען בתאורה</span>
-            <span className="text-xs text-white/60 font-light">קטלוג טכני · הצעת מחיר מהירה</span>
+            <span className="font-heading font-black text-base tracking-wide">גלה את הקטלוג לבד</span>
+            <span className="text-xs text-white/60 font-light">קטלוג מלא · הצעת מחיר מהירה</span>
           </button>
         </div>
       </div>
@@ -725,47 +725,47 @@ const ProjectsSection = () => {
 
 /* ── TRUST BAR ── */
 const TrustBar = () => !SHOW_TRUST_BAR ? null : (
-  <div className="bg-white border-b border-border py-4 px-6">
-    <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+  <div className="bg-ink border-b border-white/8 py-3.5 px-6">
+    <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-5 sm:gap-10">
 
       {/* ייצור מקומי */}
-      <div className="flex items-center gap-2">
-        <span className="text-lg">🇮🇱</span>
-        <span className="text-xs font-bold uppercase tracking-widest text-ink">ייצור מקומי</span>
+      <div className="flex items-center gap-2.5">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A566" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/75">ייצור מקומי · רחובות</span>
       </div>
 
-      <div className="w-px h-5 bg-border hidden sm:block"/>
+      <div className="w-px h-4 bg-white/12 hidden sm:block"/>
 
       {/* Lab Tested */}
-      <div className="flex items-center gap-2">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8973A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <div className="flex items-center gap-2.5">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A566" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0a3 3 0 1 0 6 0m-6 0h6m-6 0H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-3"/>
         </svg>
-        <span className="text-xs font-bold uppercase tracking-widest text-ink">LAB TESTED V2</span>
+        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/75">LAB TESTED V2</span>
       </div>
 
-      <div className="w-px h-5 bg-border hidden sm:block"/>
+      <div className="w-px h-4 bg-white/12 hidden sm:block"/>
 
       {/* ISO */}
-      <div className="flex items-center gap-2">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8973A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <div className="flex items-center gap-2.5">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A566" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           <polyline points="9 12 11 14 15 10"/>
         </svg>
-        <span className="text-xs font-bold uppercase tracking-widest text-ink">ISO 9001:2015</span>
+        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/75">ISO 9001:2015</span>
       </div>
 
-      <div className="w-px h-5 bg-border hidden sm:block"/>
+      <div className="w-px h-4 bg-white/12 hidden sm:block"/>
 
-      {/* הנדסה ישראלית */}
-      <div className="flex items-center gap-2">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8973A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+      {/* שותף רשמי QLT */}
+      <div className="flex items-center gap-2.5">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A566" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
         </svg>
-        <span className="text-xs font-bold uppercase tracking-widest text-ink">15 שנות הנדסת תאורה</span>
+        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/75">שותף רשמי QLT איטליה</span>
       </div>
-
 
     </div>
   </div>
@@ -1324,22 +1324,33 @@ const ProductModal = ({ prod, onClose, onAddToCart }) => {
             <button onClick={onClose} aria-label="סגור פרטי מוצר" className="text-muted hover:text-ink transition-colors p-1 mt-1 shrink-0">{Ico.close}</button>
           </div>
 
-          {/* Product hero image — real product photo for all categories */}
-          <div className="bg-bg-soft flex items-center justify-center p-8 min-h-[280px] relative overflow-hidden">
-            <img
-              src={catalogImg(prod)}
-              alt={prod.name}
-              className="max-h-64 max-w-full object-contain relative z-10"
-              onError={e => {
-                const lifestyle = CATEGORY_LIFESTYLE_IMG[prod.category] || PROFILE_AMBIENT[0];
-                if (e.target.src !== lifestyle) {
-                  e.target.src = lifestyle;
-                  e.target.className = 'w-full h-full object-cover absolute inset-0';
-                  e.target.closest('div').style.padding = '0';
-                }
-              }}
-            />
-          </div>
+          {/* Product hero — lifestyle background + product image floating */}
+          {(() => {
+            const lifestyle = CATEGORY_LIFESTYLE_IMG[prod.category] || PROFILE_AMBIENT[0];
+            const prodImg   = prod.img && !isSchematicImg(prod.img) ? prod.img : null;
+            return (
+              <div className="relative overflow-hidden" style={{height:'280px'}}>
+                {/* רקע אווירה מותאם לקטגוריה */}
+                <img src={lifestyle} alt="" aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover"/>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/10"/>
+                {/* תמונת מוצר מרחפת — רק אם קיימת */}
+                {prodImg && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div style={{background:'rgba(255,255,255,0.92)', borderRadius:'12px', padding:'16px 24px', boxShadow:'0 12px 40px rgba(0,0,0,0.5)', backdropFilter:'blur(4px)'}}>
+                      <img src={prodImg} alt={prod.name}
+                        style={{maxHeight:'130px', maxWidth:'220px', objectFit:'contain', display:'block'}}
+                      />
+                    </div>
+                  </div>
+                )}
+                {/* שם קטגוריה */}
+                {prod.category && (
+                  <span className="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-widest bg-black/50 backdrop-blur-sm text-white/90 px-2.5 py-1 rounded-sm">{prod.category}</span>
+                )}
+              </div>
+            );
+          })()}
 
           <div className="p-6 space-y-6">
             {/* Description */}
@@ -1399,14 +1410,21 @@ const ProductModal = ({ prod, onClose, onAddToCart }) => {
                 </a>
               </div>
             ) : (
-              <div className="flex gap-3">
-                {prod.url && (
-                  <a href={prod.url} target="_blank" rel="noopener noreferrer"
-                     className="flex-1 text-center border border-border text-ink-soft text-xs font-bold uppercase tracking-wider py-2.5 px-4 hover:border-gold hover:text-gold transition-colors rounded flex items-center justify-center gap-2">
-                    לדף המוצר ↗
+              <div className="space-y-3">
+                <a
+                  href={`https://wa.me/972504722550?text=${encodeURIComponent('שלום LedLink, אני מעוניין לקבל הצעת מחיר עבור: ' + prod.name)}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1ebe5d] text-white text-sm font-bold py-3 px-4 rounded transition-colors">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 0C5.373 0 0 5.373 0 12c0 2.118.554 4.107 1.523 5.837L.057 23.928l6.246-1.637A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.369l-.359-.213-3.706.972.989-3.617-.234-.372A9.818 9.818 0 1 1 12 21.818z"/></svg>
+                  קבל הצעת מחיר ב-WhatsApp
+                </a>
+                <div className="flex gap-3">
+                  <a href="tel:086326059"
+                    className="flex-1 flex items-center justify-center gap-2 border border-border text-ink-soft text-sm font-bold py-3 px-4 rounded hover:border-gold hover:text-gold transition-colors">
+                    {Ico.phone} התקשר אלינו
                   </a>
-                )}
-                <div className="flex-1"><AddToCartBtn onClick={() => { onAddToCart(prod); onClose(); }}/></div>
+                  <div className="flex-1"><AddToCartBtn onClick={() => { onAddToCart(prod); onClose(); }}/></div>
+                </div>
               </div>
             )}
           </div>
@@ -2697,36 +2715,37 @@ const PROFILE_BY_ROOM = {
 /* Lifestyle / atmosphere images per product category — shown in catalog cards & modal hero
    instead of white-background technical shots ("שרטוטים") */
 const CATEGORY_LIFESTYLE_IMG = {
-  /* ── פנים / Indoor ceiling ─────────────────────────────────────────── */
-  'צמודי תקרה פנים':      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80',
-  'צמודי תקרה דקורטיבי': 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=80',
-  'שקועי תקרה פנים':      'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=700&q=80',
-  'צמודי תקרה ספוט':      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=700&q=80',
-  /* ── קיר פנים / Indoor wall ─────────────────────────────────────────── */
-  'צמודי קיר פנים':       'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?auto=format&fit=crop&w=700&q=80',
-  'שקועי קיר פנים':       'https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=700&q=80',
-  /* ── תלויים / Pendants ───────────────────────────────────────────────── */
-  'תלויים דקורטיבי':      'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=700&q=80',
-  /* ── מסילות / Track ──────────────────────────────────────────────────── */
-  'פסי צבירה פנים':       'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=700&q=80',
-  'פס צבירה מגנטי':       'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=700&q=80',
-  /* ── עמידה / Floor lamp ───────────────────────────────────────────────── */
-  'מנורות עמידה':         'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=700&q=80',
-  /* ── פרופילים / Profiles & strips ─────────────────────────────────────── */
-  'פרופילים':             'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80',
-  'סטריפ LED - LedLink':  'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=700&q=80',
-  'ספקי מתח':             'https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=700&q=80',
-  'נורות LED':            'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80',
-  'תאורה לשולחנות תצוגה':'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=700&q=80',
-  /* ── חוץ / Outdoor ───────────────────────────────────────────────────── */
-  'דוקרני גינה':          'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80',
-  'עמודוני חוץ':          'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=80',
-  'צמודי קיר חוץ':        'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=80',
-  'שקועי קיר חוץ':        'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=80',
-  'צמודי תקרה חוץ':       'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=80',
-  'תלויים חוץ':           'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=700&q=80',
-  'שקועי רצפה חוץ':       'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80',
-  'תאורה סולארית':        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80',
+  /* ── תקרה פנים — LED panels / downlights / spots ──────────────────────
+     כל אחת מציגה את סוג הגוף בחלל האמיתי שבו הוא משמש */
+  'צמודי תקרה פנים':      'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80', /* פנל LED צמוד תקרה במשרד/חלל מודרני */
+  'צמודי תקרה דקורטיבי': 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80', /* פנדנט/דקורטיבי בחדר מגורים */
+  'שקועי תקרה פנים':      'https://images.pexels.com/photos/1669799/pexels-photo-1669799.jpeg?auto=compress&cs=tinysrgb&w=700', /* סלון מודרני עם downlights שקועים — Pexels verified */
+  'צמודי תקרה ספוט':      'https://images.pexels.com/photos/6301183/pexels-photo-6301183.jpeg?auto=compress&cs=tinysrgb&w=700', /* מטבח לבן מודרני עם ספוטים בתקרה — Pexels: "White Kitchen with Modern Appliances" */
+  /* ── קיר פנים — wall sconces / recessed wall ────────────────────────── */
+  'צמודי קיר פנים':       'https://images.pexels.com/photos/4792349/pexels-photo-4792349.jpeg?auto=compress&cs=tinysrgb&w=700', /* חדר שינה עם מנורת קיר ליד מיטה — Pexels: "Bedroom interior with lamp near wall" */
+  'שקועי קיר פנים':       'https://images.pexels.com/photos/277572/pexels-photo-277572.jpeg?auto=compress&cs=tinysrgb&w=700', /* מסדרון מלון עם אורות קיר — Pexels: "Turned-on Lights Along Hotel Hallway" */
+  /* ── תלויים — pendant / chandelier ─────────────────────────────────── */
+  'תלויים דקורטיבי':      'https://images.pexels.com/photos/9937448/pexels-photo-9937448.jpeg?auto=compress&cs=tinysrgb&w=700', /* פנדנטים מוארים מעל דלפק מטבח — Pexels: "Pendant Lamps above a Kitchen Counter" */
+  /* ── מסילות — track / magnetic ──────────────────────────────────────── */
+  'פסי צבירה פנים':       'https://images.pexels.com/photos/35335909/pexels-photo-35335909.jpeg?auto=compress&cs=tinysrgb&w=700', /* גלריה מודרנית עם תאורת מסילה — Pexels: "Modern Art Gallery Interior with Stylish Lighting" */
+  'פס צבירה מגנטי':       'https://images.pexels.com/photos/5570228/pexels-photo-5570228.jpeg?auto=compress&cs=tinysrgb&w=700', /* חלל מינימליסטי מודרני — Pexels: "Minimalistic design of modern living room" */
+  /* ── עמידה — floor lamp ─────────────────────────────────────────────── */
+  'מנורות עמידה':         'https://images.pexels.com/photos/1907784/pexels-photo-1907784.jpeg?auto=compress&cs=tinysrgb&w=700', /* מנורת עמידה ליד ספה בסלון/ספרייה — Pexels: "Turned on Floor Lamp near Sofa" */
+  /* ── LED פרופילים וסטריפ — architectural LED ───────────────────────── */
+  'פרופילים':             'https://images.pexels.com/photos/31737843/pexels-photo-31737843.jpeg?auto=compress&cs=tinysrgb&w=700', /* חדר שינה יוקרתי עם תאורת cove עקיפה — Pexels: "Modern Luxury Bedroom Interior Design" */
+  'סטריפ LED - LedLink':  'https://images.pexels.com/photos/4713242/pexels-photo-4713242.jpeg?auto=compress&cs=tinysrgb&w=700', /* מטבח מודרני — Pexels: "Photo of Kitchen Interior" */
+  'ספקי מתח':             'https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=700&q=80', /* לוח חשמל / התקנה — הקשר טכני */
+  'נורות LED':            'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80', /* גוף תאורה עם נורה גלויה */
+  'תאורה לשולחנות תצוגה': 'https://images.pexels.com/photos/35335909/pexels-photo-35335909.jpeg?auto=compress&cs=tinysrgb&w=700', /* גלריה/ויטרינה עם תאורת תצוגה מקצועית */
+  /* ── חוץ — outdoor ──────────────────────────────────────────────────── */
+  'דוקרני גינה':          'https://images.pexels.com/photos/25286944/pexels-photo-25286944.jpeg?auto=compress&cs=tinysrgb&w=700', /* תאורת שביל לילה בגינה — Pexels: "Lights by the Path at Night" */
+  'עמודוני חוץ':          'https://images.pexels.com/photos/221288/pexels-photo-221288.jpeg?auto=compress&cs=tinysrgb&w=700', /* עמודוני תאורה מוארים בלילה — Pexels: "Lamp Posts Turned on at Night" */
+  'צמודי קיר חוץ':        'https://images.pexels.com/photos/9333842/pexels-photo-9333842.jpeg?auto=compress&cs=tinysrgb&w=700', /* חזית בית מוארת בלילה — Pexels: "The exterior of a House at Night" */
+  'שקועי קיר חוץ':        'https://images.pexels.com/photos/9333842/pexels-photo-9333842.jpeg?auto=compress&cs=tinysrgb&w=700', /* חזית בית בלילה — Pexels */
+  'צמודי תקרה חוץ':       'https://images.pexels.com/photos/17962526/pexels-photo-17962526.jpeg?auto=compress&cs=tinysrgb&w=700', /* פרגולה עם פנסים ואורות — Pexels: "Lights and Lanterns on Pergola" */
+  'תלויים חוץ':           'https://images.pexels.com/photos/30505255/pexels-photo-30505255.jpeg?auto=compress&cs=tinysrgb&w=700', /* מסיבת לילה מתחת לאורות מחרוזת — Pexels: "Vibrant Night Party Under String Lights" */
+  'שקועי רצפה חוץ':       'https://images.pexels.com/photos/13055004/pexels-photo-13055004.jpeg?auto=compress&cs=tinysrgb&w=700', /* אריחי רצפה עם השתקפות אור בלילה — Pexels */
+  'תאורה סולארית':        'https://images.pexels.com/photos/25286944/pexels-photo-25286944.jpeg?auto=compress&cs=tinysrgb&w=700', /* תאורת שביל גינה בלילה */
 };
 
 /* Categories whose prod.img is a technical schematic / aluminum extrusion drawing —
@@ -2869,17 +2888,17 @@ const ROOM_MOOD_INSPO = {
   },
   kitchen: {
     warm: [
-      { img:_F.underCabinet, cap:'אור שהופך ארוחה לחוויה' },
+      { img:'https://images.pexels.com/photos/6508354/pexels-photo-6508354.jpeg?auto=compress&cs=tinysrgb&w=700', cap:'אור שהופך ארוחה לחוויה' },
       { img:_F.kitchenAmb,   cap:'כאן המשפחה נפגשת' },
       { img:_F.vanityLED,    cap:'הריח של שבת + האור הנכון' },
     ],
     neutral: [
-      { img:_F.underCabinet, cap:'מטבח שעובד בשבילך' },
+      { img:'https://images.pexels.com/photos/6301185/pexels-photo-6301185.jpeg?auto=compress&cs=tinysrgb&w=700', cap:'מטבח שעובד בשבילך' },
       { img:_F.kitchenAmb,   cap:'כל דבר נראה טוב באור הזה' },
       { img:_F.vanityLED,    cap:'נקי, מדויק, מקצועי' },
     ],
     dramatic: [
-      { img:_F.underCabinet, cap:'תאורה שיוצרת אפקט WOW' },
+      { img:'https://images.pexels.com/photos/6969870/pexels-photo-6969870.jpeg?auto=compress&cs=tinysrgb&w=700', cap:'תאורה שיוצרת אפקט WOW' },
       { img:_F.kitchenAmb,   cap:'מטבח שגורם לאורחים לשאול: מי עשה?' },
       { img:_F.vanityLED,    cap:'מהמטבח של הצילומים — לבית שלך' },
     ],
@@ -2903,17 +2922,17 @@ const ROOM_MOOD_INSPO = {
   },
   garden: {
     warm: [
-      { img:_F.gardenLight,  cap:'ערב קיץ מושלם' },
+      { img:'https://images.pexels.com/photos/25286944/pexels-photo-25286944.jpeg?auto=compress&cs=tinysrgb&w=700', cap:'ערב קיץ מושלם' },
       { img:_F.patioLight,   cap:'הגינה שכולם מקנאים בה' },
       { img:_F.poolLight,    cap:'הירח + האור שלנו = קסם' },
     ],
     neutral: [
-      { img:_F.gardenLight,  cap:'גינה שנראית כמו מגזין' },
+      { img:'https://images.pexels.com/photos/221288/pexels-photo-221288.jpeg?auto=compress&cs=tinysrgb&w=700', cap:'גינה שנראית כמו מגזין' },
       { img:_F.patioLight,   cap:'כל פינה מוארת בדיוק נכון' },
       { img:_F.poolLight,    cap:'סדר ויופי בחוץ' },
     ],
     dramatic: [
-      { img:_F.gardenLight,  cap:'גינה שמרגישה כמו מקום בריחה' },
+      { img:'https://images.pexels.com/photos/9333842/pexels-photo-9333842.jpeg?auto=compress&cs=tinysrgb&w=700', cap:'גינה שמרגישה כמו מקום בריחה' },
       { img:_F.poolLight,    cap:'תאורה שהופכת חצר למלון' },
       { img:_F.patioLight,   cap:'ניגודיות שעוצרת נשימה' },
     ],
@@ -2925,7 +2944,7 @@ const ROOM_MOOD_INSPO = {
       { img:_F.indirectLR,   cap:'אור לילה שמרגיע' },
     ],
     neutral: [
-      { img:_F.bedroomLED,   cap:'חדר שגדל איתם' },
+      { img:_F.bedroomCorner, cap:'חדר שגדל איתם' },
       { img:_F.corridorLED,  cap:'אור בהיר ללמידה' },
       { img:_F.indirectLR,   cap:'תאורה שעוזרת להתרכז' },
     ],
@@ -2942,12 +2961,12 @@ const ROOM_MOOD_INSPO = {
       { img:_F.coveSalon,    cap:'אור שאומר: הגעת הביתה' },
     ],
     neutral: [
-      { img:_F.hallwayLED,   cap:'נקי ומזמין מהצעד הראשון' },
+      { img:_F.corridorLED,  cap:'נקי ומזמין מהצעד הראשון' },
       { img:_F.corridorLED,  cap:'כל דבר במקום שלו' },
       { img:_F.coveSalon,    cap:'כניסה שנושמת סדר' },
     ],
     dramatic: [
-      { img:_F.hallwayLED,   cap:'כניסה שעוצרת נשימה' },
+      { img:_F.coveSalon,    cap:'כניסה שעוצרת נשימה' },
       { img:_F.corridorLED,  cap:'אור שמוביל את העין' },
       { img:_F.coveSalon,    cap:'WOW מהדלת' },
     ],
@@ -2961,9 +2980,9 @@ const LIGHTING_RECIPES = {
       title: 'סלון חמים ואינטימי',
       temp: '2700K–3000K',
       layers: [
-        { icon:'💡', name:'תאורה כללית', desc:'פרופיל LED שקוע בנישת גבס (Cove) — אור עקיף על התקרה', product:'פרופיל שקוע גבס' },
-        { icon:'✨', name:'תאורה מבטאת', desc:'סטריפ LED מאחורי ארון טלוויזיה או מדף — זוהר עדין שיוצר עומק', product:'סטריפ LED 2835' },
-        { icon:'🔅', name:'עמעום', desc:'דימר לשליטה מלאה באווירה — מ-100% לניקיון ועד 10% לסרט', product:'דימר RF / WiFi' },
+        { icon:'💡', name:'תאורה כללית', desc:'פרופיל LED שקוע בנישת גבס (Cove) — אור עקיף על התקרה', product:'פרופיל תאורת Cove' },
+        { icon:'✨', name:'תאורה מבטאת', desc:'סטריפ LED מאחורי ארון טלוויזיה או מדף — זוהר עדין שיוצר עומק', product:'סטריפ LED' },
+        { icon:'🔅', name:'עמעום', desc:'דימר לשליטה מלאה באווירה — מ-100% לניקיון ועד 10% לסרט', product:'שלט עמעום חכם' },
       ],
       estimate: '8–14 מטר סטריפ + 2–3 פרופילים + ספק 100–150W',
     },
@@ -2981,9 +3000,9 @@ const LIGHTING_RECIPES = {
       title: 'סלון דרמטי ומרשים',
       temp: '2700K (עם אזורי 4000K)',
       layers: [
-        { icon:'💡', name:'תאורת Cove', desc:'פרופיל שקוע בנישת גבס עמוקה — אור שמרחף מהתקרה', product:'פרופיל שקוע גבס' },
-        { icon:'✨', name:'תאורת מבטא', desc:'ספוט מכוון על קיר אבן / תמונה — ניגודיות חזקה', product:'ספוט שקוע תקרה' },
-        { icon:'🎯', name:'תאורה נסתרת', desc:'סטריפ LED מתחת לספה / ריהוט — אפקט ריחוף', product:'סטריפ LED IP20' },
+        { icon:'💡', name:'תאורת Cove', desc:'פרופיל שקוע בנישת גבס עמוקה — אור שמרחף מהתקרה', product:'פרופיל תאורת Cove' },
+        { icon:'✨', name:'תאורת מבטא', desc:'ספוט מכוון על קיר אבן / תמונה — ניגודיות חזקה', product:'ספוט מכוון תקרה' },
+        { icon:'🎯', name:'תאורה נסתרת', desc:'סטריפ LED מתחת לספה / ריהוט — אפקט ריחוף', product:'סטריפ LED' },
       ],
       estimate: '12–18 מטר סטריפ + 3–5 פרופילים + ספוטים + ספק 200W',
     },
@@ -2993,9 +3012,9 @@ const LIGHTING_RECIPES = {
       title: 'מטבח חמים ומזמין',
       temp: '2700K–3000K',
       layers: [
-        { icon:'💡', name:'תאורת משטח', desc:'פרופיל LED מתחת לארונות עליונים — אור עבודה ישיר על השיש', product:'פרופיל צמוד / פינתי' },
-        { icon:'✨', name:'תאורת אווירה', desc:'סטריפ LED מעל ארונות עליונים — זוהר עקיף על התקרה', product:'סטריפ LED 2835' },
-        { icon:'🛡️', name:'הגנה', desc:'IP54 לאזור השיש — הגנה מאדים והתזות', product:'סטריפ IP54' },
+        { icon:'💡', name:'תאורת משטח', desc:'פרופיל LED מתחת לארונות עליונים — אור עבודה ישיר על השיש', product:'פרופיל מתחת לארונות' },
+        { icon:'✨', name:'תאורת אווירה', desc:'סטריפ LED מעל ארונות עליונים — זוהר עקיף על התקרה', product:'סטריפ LED' },
+        { icon:'🛡️', name:'הגנה', desc:'IP54 לאזור השיש — הגנה מאדים והתזות', product:'סטריפ עמיד ספריי' },
       ],
       estimate: '4–8 מטר סטריפ + 2 פרופילים + ספק 60–100W',
     },
@@ -3003,8 +3022,8 @@ const LIGHTING_RECIPES = {
       title: 'מטבח נקי ופונקציונלי',
       temp: '3000K–4000K',
       layers: [
-        { icon:'💡', name:'תאורת עבודה', desc:'פרופיל LED מתחת לארונות — אור חזק ואחיד על כל השיש', product:'פרופיל צמוד אלומיניום' },
-        { icon:'✨', name:'תאורת אי', desc:'פרופיל תלוי מעל האי — קו אור מודרני', product:'פרופיל תלוי / suspended' },
+        { icon:'💡', name:'תאורת עבודה', desc:'פרופיל LED מתחת לארונות — אור חזק ואחיד על כל השיש', product:'פרופיל מתחת לארונות' },
+        { icon:'✨', name:'תאורת אי', desc:'פרופיל תלוי מעל האי — קו אור מודרני', product:'פרופיל תלוי מעל האי' },
         { icon:'🔅', name:'עמעום', desc:'שליטה נפרדת: 100% לבישול, 30% לאווירה', product:'דימר' },
       ],
       estimate: '6–12 מטר סטריפ + 2–3 פרופילים + ספק 100–150W',
@@ -3013,9 +3032,9 @@ const LIGHTING_RECIPES = {
       title: 'מטבח דרמטי ויוקרתי',
       temp: '2700K + 4000K (מעורב)',
       layers: [
-        { icon:'💡', name:'תאורת שיש', desc:'סטריפ בפרופיל פינתי 45° — אור חד ומדויק', product:'פרופיל פינתי 45°' },
-        { icon:'✨', name:'תאורה נסתרת', desc:'סטריפ LED מתחת לאי — אפקט ריחוף דרמטי', product:'סטריפ LED IP20' },
-        { icon:'🎯', name:'תאורת ויטרינה', desc:'LED בתוך ארונות זכוכית — הדגשת כלים ואקססוריז', product:'סטריפ LED מיני' },
+        { icon:'💡', name:'תאורת שיש', desc:'סטריפ בפרופיל פינתי 45° — אור חד ומדויק', product:'פרופיל פינתי לשיש' },
+        { icon:'✨', name:'תאורה נסתרת', desc:'סטריפ LED מתחת לאי — אפקט ריחוף דרמטי', product:'סטריפ LED' },
+        { icon:'🎯', name:'תאורת ויטרינה', desc:'LED בתוך ארונות זכוכית — הדגשת כלים ואקססוריז', product:'סטריפ LED מיני לוויטרינה' },
       ],
       estimate: '8–14 מטר סטריפ + 3–4 פרופילים + ספק 100–150W',
     },
@@ -3025,9 +3044,9 @@ const LIGHTING_RECIPES = {
       title: 'חדר שינה חמים ורומנטי',
       temp: '2700K',
       layers: [
-        { icon:'💡', name:'תאורת ראש מיטה', desc:'סטריפ LED מאחורי ראש המיטה — זוהר זהוב עדין', product:'פרופיל שקוע / צמוד' },
-        { icon:'✨', name:'תאורת תקרה', desc:'Cove עדין בנישת גבס — אור שמלטף', product:'פרופיל שקוע גבס' },
-        { icon:'🔅', name:'עמעום', desc:'דימר ליד המיטה — מ-30% לקריאה עד 5% ללילה', product:'דימר RF' },
+        { icon:'💡', name:'תאורת ראש מיטה', desc:'סטריפ LED מאחורי ראש המיטה — זוהר זהוב עדין', product:'פרופיל לראש מיטה' },
+        { icon:'✨', name:'תאורת תקרה', desc:'Cove עדין בנישת גבס — אור שמלטף', product:'פרופיל תאורת Cove' },
+        { icon:'🔅', name:'עמעום', desc:'דימר ליד המיטה — מ-30% לקריאה עד 5% ללילה', product:'שלט עמעום ליד המיטה' },
       ],
       estimate: '5–10 מטר סטריפ + 2 פרופילים + ספק 60–100W',
     },
@@ -3036,7 +3055,7 @@ const LIGHTING_RECIPES = {
       temp: '3000K',
       layers: [
         { icon:'💡', name:'תאורה כללית', desc:'פרופיל צמוד תקרה — קו אור נקי ומינימליסטי', product:'פרופיל צמוד תקרה' },
-        { icon:'✨', name:'תאורת ארון', desc:'סטריפ LED בתוך הארון — רואים הכל בלי להדליק את החדר', product:'סטריפ LED + חיישן' },
+        { icon:'✨', name:'תאורת ארון', desc:'סטריפ LED בתוך הארון — רואים הכל בלי להדליק את החדר', product:'סטריפ LED עם חיישן לארון' },
         { icon:'🔅', name:'עמעום', desc:'עמעום חכם — לילה אוטומטי ב-5%', product:'דימר WiFi' },
       ],
       estimate: '6–10 מטר סטריפ + 2–3 פרופילים + ספק 60–100W',
@@ -3045,9 +3064,9 @@ const LIGHTING_RECIPES = {
       title: 'חדר שינה דרמטי ומעוצב',
       temp: '2700K',
       layers: [
-        { icon:'💡', name:'תאורת ראש מיטה', desc:'פרופיל LED שקוע בקיר מאחורי המיטה — הילה דרמטית', product:'פרופיל שקוע' },
-        { icon:'✨', name:'תאורה צפה', desc:'סטריפ מתחת למיטה — אפקט ריחוף', product:'סטריפ LED IP20' },
-        { icon:'🎯', name:'תאורת מבטא', desc:'ספוט מכוון על קיר טקסטורה / תמונה', product:'ספוט שקוע תקרה' },
+        { icon:'💡', name:'תאורת ראש מיטה', desc:'פרופיל LED שקוע בקיר מאחורי המיטה — הילה דרמטית', product:'פרופיל LED בקיר' },
+        { icon:'✨', name:'תאורה צפה', desc:'סטריפ מתחת למיטה — אפקט ריחוף', product:'סטריפ LED' },
+        { icon:'🎯', name:'תאורת מבטא', desc:'ספוט מכוון על קיר טקסטורה / תמונה', product:'ספוט מכוון תקרה' },
       ],
       estimate: '6–12 מטר סטריפ + 2–3 פרופילים + ספק 100W',
     },
@@ -3057,9 +3076,9 @@ const LIGHTING_RECIPES = {
       title: 'גינה חמימה ומזמינה',
       temp: '2700K',
       layers: [
-        { icon:'💡', name:'תאורת נתיב', desc:'עמודוני LED נמוכים לאורך השביל — בטיחות + אווירה', product:'עמודונים LED' },
-        { icon:'✨', name:'תאורת צמחייה', desc:'ספוט הצפה מכוון על עץ/שיח — דרמה ירוקה', product:'ספוט הצפה IP67' },
-        { icon:'🛡️', name:'הגנה', desc:'IP65–IP67 חובה לחוץ — עמידות בגשם, שמש ואבק', product:'גופי תאורה חוץ' },
+        { icon:'💡', name:'תאורת נתיב', desc:'עמודוני LED נמוכים לאורך השביל — בטיחות + אווירה', product:'עמודוני שביל LED' },
+        { icon:'✨', name:'תאורת צמחייה', desc:'ספוט הצפה מכוון על עץ/שיח — דרמה ירוקה', product:'ספוט גינה מכוון' },
+        { icon:'🛡️', name:'הגנה', desc:'IP65–IP67 חובה לחוץ — עמידות בגשם, שמש ואבק', product:'גופי תאורה עמידי גשם' },
       ],
       estimate: '4–8 ספוטים + 4–6 עמודונים + ספקי מתח חוץ',
     },
@@ -3067,8 +3086,8 @@ const LIGHTING_RECIPES = {
       title: 'גינה מסודרת ומוארת',
       temp: '3000K–4000K',
       layers: [
-        { icon:'💡', name:'תאורה כללית', desc:'גופי LED צמודי קיר חיצוניים — הארה אחידה', product:'צמוד חומה IP65' },
-        { icon:'✨', name:'תאורת מדרגות', desc:'LED שקוע במדרגות — בטיחות ואלגנטיות', product:'שקוע רצפה IP67' },
+        { icon:'💡', name:'תאורה כללית', desc:'גופי LED צמודי קיר חיצוניים — הארה אחידה', product:'גוף תאורה לחומה' },
+        { icon:'✨', name:'תאורת מדרגות', desc:'LED שקוע במדרגות — בטיחות ואלגנטיות', product:'שקועי LED למדרגות' },
         { icon:'🔅', name:'חיישנים', desc:'חיישן תנועה — חוסך חשמל ומאיר רק כשצריך', product:'חיישן תנועה חוץ' },
       ],
       estimate: '4–6 גופי קיר + 6–10 שקועי מדרגות + חיישנים',
@@ -3077,9 +3096,9 @@ const LIGHTING_RECIPES = {
       title: 'גינה דרמטית ומרשימה',
       temp: '2700K + RGB',
       layers: [
-        { icon:'💡', name:'תאורת הצפה', desc:'ספוטים מכוונים על עצים ואלמנטים — צללים דרמטיים', product:'ספוט הצפה IP67' },
-        { icon:'✨', name:'תאורת בריכה', desc:'LED שקוע מים — הבריכה הופכת לאלמנט עיצובי', product:'LED מתחת למים IP68' },
-        { icon:'🎯', name:'תאורת קונטור', desc:'סטריפ LED לאורך אדנית / גדר / פרגולה', product:'סטריפ IP67' },
+        { icon:'💡', name:'תאורת הצפה', desc:'ספוטים מכוונים על עצים ואלמנטים — צללים דרמטיים', product:'ספוט הצפה לגינה' },
+        { icon:'✨', name:'תאורת בריכה', desc:'LED שקוע מים — הבריכה הופכת לאלמנט עיצובי', product:'תאורת בריכה תת-מימית' },
+        { icon:'🎯', name:'תאורת קונטור', desc:'סטריפ LED לאורך אדנית / גדר / פרגולה', product:'סטריפ LED חוץ' },
       ],
       estimate: '6–10 ספוטים + סטריפ IP67 + ספקי מתח חוץ',
     },
@@ -3090,8 +3109,8 @@ const LIGHTING_RECIPES = {
       temp: '2700K–3000K',
       layers: [
         { icon:'💡', name:'תאורה כללית', desc:'פרופיל LED צמוד תקרה — אור אחיד בלי ספוטים שמסנוורים', product:'פרופיל צמוד תקרה' },
-        { icon:'🌙', name:'אור לילה', desc:'סטריפ LED עמום מתחת למיטה — בלי לקום לחושך', product:'סטריפ LED + דימר' },
-        { icon:'🛡️', name:'בטיחות', desc:'מתח נמוך 24V — בטוח לחלוטין. ספק מוסתר בארון', product:'ספק 24V' },
+        { icon:'🌙', name:'אור לילה', desc:'סטריפ LED עמום מתחת למיטה — בלי לקום לחושך', product:'סטריפ אור לילה' },
+        { icon:'🛡️', name:'בטיחות', desc:'מתח נמוך 24V — בטוח לחלוטין. ספק מוסתר בארון', product:'ספק מתח בטיחותי 24V' },
       ],
       estimate: '4–8 מטר סטריפ + 1–2 פרופילים + ספק 60W',
     },
@@ -3100,8 +3119,8 @@ const LIGHTING_RECIPES = {
       temp: '3000K–4000K',
       layers: [
         { icon:'💡', name:'תאורה כללית', desc:'פרופיל LED צמוד תקרה — אור חזק ואחיד', product:'פרופיל צמוד תקרה' },
-        { icon:'📚', name:'תאורת שולחן', desc:'פרופיל LED ממוקד מעל שולחן הלימוד — אור לעיניים', product:'פרופיל קצר + סטריפ 4000K' },
-        { icon:'🔅', name:'עמעום', desc:'מעבר מ-4000K ללימודים ל-2700K ללילה', product:'דימר + CCT' },
+        { icon:'📚', name:'תאורת שולחן', desc:'פרופיל LED ממוקד מעל שולחן הלימוד — אור לעיניים', product:'תאורת שולחן לימוד' },
+        { icon:'🔅', name:'עמעום', desc:'מעבר מ-4000K ללימודים ל-2700K ללילה', product:'דימר עם החלפת גוון' },
       ],
       estimate: '5–8 מטר סטריפ + 2 פרופילים + ספק 60–100W',
     },
@@ -3109,9 +3128,9 @@ const LIGHTING_RECIPES = {
       title: 'חדר ילדים מגניב ומיוחד',
       temp: 'RGB + 3000K',
       layers: [
-        { icon:'🌈', name:'תאורת RGB', desc:'סטריפ LED צבעוני — הילד בוחר צבע לפי מצב רוח', product:'סטריפ RGB / RGBW' },
-        { icon:'✨', name:'תאורת מבטא', desc:'LED מאחורי מדף / מיטת קומותיים — אפקט חללי', product:'סטריפ LED' },
-        { icon:'📱', name:'שליטה', desc:'אפליקציה / שלט — הילד שולט בצבע ועוצמה', product:'בקר WiFi RGB' },
+        { icon:'🌈', name:'תאורת RGB', desc:'סטריפ LED צבעוני — הילד בוחר צבע לפי מצב רוח', product:'סטריפ LED צבעוני' },
+        { icon:'✨', name:'תאורת מבטא', desc:'LED מאחורי מדף / מיטת קומותיים — אפקט חללי', product:'סטריפ LED לאפקטים' },
+        { icon:'📱', name:'שליטה', desc:'אפליקציה / שלט — הילד שולט בצבע ועוצמה', product:'שלט WiFi לצבעים' },
       ],
       estimate: '6–10 מטר סטריפ RGB + בקר + ספק 100W',
     },
@@ -3133,7 +3152,7 @@ const LIGHTING_RECIPES = {
       layers: [
         { icon:'💡', name:'תאורה כללית', desc:'פרופיל צמוד תקרה לינארי — קו אור מוביל פנימה', product:'פרופיל צמוד תקרה' },
         { icon:'✨', name:'תאורת נישה', desc:'LED בנישת קיר / ארון נעליים — סדר ופונקציונליות', product:'סטריפ LED' },
-        { icon:'🔅', name:'חיישן', desc:'חיישן נוכחות — חוסך חשמל, תמיד מואר כשצריך', product:'חיישן PIR' },
+        { icon:'🔅', name:'חיישן', desc:'חיישן נוכחות — חוסך חשמל, תמיד מואר כשצריך', product:'חיישן נוכחות' },
       ],
       estimate: '3–6 מטר סטריפ + 1–2 פרופילים + ספק 60W',
     },
@@ -3141,9 +3160,9 @@ const LIGHTING_RECIPES = {
       title: 'כניסה דרמטית — WOW מהדלת',
       temp: '2700K',
       layers: [
-        { icon:'💡', name:'תאורת Cove', desc:'פרופיל שקוע גבס ברחבי התקרה — אור שמרחף', product:'פרופיל שקוע גבס' },
-        { icon:'✨', name:'תאורת רצפה', desc:'סטריפ LED שקוע ברצפה לאורך הקיר — מוביל את העין', product:'פרופיל שקוע רצפה IP54' },
-        { icon:'🎯', name:'תאורת מבטא', desc:'ספוט מכוון על אלמנט אמנות / צמח — מיקוד דרמטי', product:'ספוט שקוע מכוון' },
+        { icon:'💡', name:'תאורת Cove', desc:'פרופיל שקוע גבס ברחבי התקרה — אור שמרחף', product:'פרופיל תאורת Cove' },
+        { icon:'✨', name:'תאורת רצפה', desc:'סטריפ LED שקוע ברצפה לאורך הקיר — מוביל את העין', product:'פרופיל LED לרצפה' },
+        { icon:'🎯', name:'תאורת מבטא', desc:'ספוט מכוון על אלמנט אמנות / צמח — מיקוד דרמטי', product:'ספוט מכוון תקרה' },
       ],
       estimate: '5–10 מטר סטריפ + 2–3 פרופילים + ספוטים + ספק 100W',
     },
@@ -3260,6 +3279,7 @@ const HomeCatalog = ({ products = [], onSwitchPro }) => {
   const [calcLevel, setCalcLevel] = useState('mid');
   const [copied, setCopied] = useState(false);
   const [pdfDone, setPdfDone] = useState(false);
+  const [drawerImg, setDrawerImg] = useState(null); /* {img, cap} — תמונה פתוחה ב-drawer */
 
   const selectedRoom = HOME_ROOMS.find(r => r.id === room);
   const selectedMood = HOME_MOODS.find(m => m.id === mood);
@@ -3368,99 +3388,141 @@ const HomeCatalog = ({ products = [], onSwitchPro }) => {
           </div>
         )}
 
-        {/* ── STEP 3: גלריית השראה + CTA ── */}
+        {/* ── STEP 3: מתכון התאורה ── */}
         {step === 3 && recipe && (
           <div>
-            <div className="text-center mb-8">
+            <div className="text-center mb-6">
               <button onClick={() => setStep(2)} className="text-muted text-sm hover:text-ink transition-colors mb-3 block mx-auto">← חזרה</button>
-              <div className="flex justify-center gap-2 mb-4">
+              <div className="flex justify-center gap-2 mb-3">
                 <span className="bg-gold/10 text-gold font-bold px-4 py-1.5 rounded-full text-sm border border-gold/20">{selectedRoom?.label}</span>
                 <span className="bg-ink text-white font-bold px-4 py-1.5 rounded-full text-sm">{selectedMood?.label}</span>
               </div>
-              <h3 className="font-heading font-black text-3xl text-ink mb-2">ככה ייראה ה{selectedRoom?.label} שלך</h3>
-              <p className="text-muted text-sm">תאורת LED מקצועית — עם המוצרים שלנו, בחלל שלך</p>
+              <h3 className="font-heading font-black text-2xl text-ink mb-1">{recipe.title}</h3>
+              <p className="text-muted text-sm">גוון מומלץ: <span className="font-bold text-ink">{recipe.temp}</span></p>
             </div>
 
-            {/* ── HERO INSPIRATION — first image large ── */}
+            {/* ── תמונת השראה גדולה ── */}
             {inspirations.length > 0 && (
-              <div className="mb-4">
-                <div className="group relative overflow-hidden rounded-2xl aspect-[16/9] shadow-xl cursor-default">
+              <div className="mb-5">
+                <div className="relative overflow-hidden rounded-2xl w-full shadow-xl" style={{height:'260px'}}>
                   <img src={inspirations[0].img} alt={inspirations[0].cap} loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"/>
-                  <div className="absolute bottom-0 inset-x-0 p-6 text-right">
-                    <p className="text-white font-heading font-black text-xl leading-tight mb-1">{inspirations[0].cap}</p>
-                    <p className="text-white/60 text-xs">גוון מומלץ: {recipe.temp}</p>
+                    className="absolute inset-0 w-full h-full object-cover"/>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"/>
+                  <div className="absolute bottom-0 inset-x-0 p-5 text-right">
+                    <p className="text-white font-heading font-black text-lg leading-tight">{inspirations[0].cap}</p>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* ── SECONDARY INSPIRATION — 2 images side by side ── */}
-            {inspirations.length > 1 && (
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                {inspirations.slice(1, 3).map((item, i) => (
-                  <div key={i} className="group relative overflow-hidden rounded-2xl aspect-[4/3] shadow-lg cursor-default">
-                    <img src={item.img} alt={item.cap} loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"/>
-                    <p className="absolute bottom-0 inset-x-0 p-4 text-white font-bold text-sm text-right leading-tight">{item.cap}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* ── PRODUCT HINTS — what's in the photos ── */}
-            <div className="bg-white rounded-2xl border border-border p-5 mb-8">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-muted mb-3">המוצרים בתמונות</p>
-              <div className="flex flex-wrap gap-2">
+            {/* ── שכבות מתכון ── */}
+            <div className="bg-white rounded-2xl border border-border shadow-sm p-5 mb-5">
+              <p className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">מה נכנס לפתרון הזה</p>
+              <div className="space-y-3">
                 {recipe.layers.map((layer, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-bg-soft rounded-full px-4 py-2 border border-border/50">
-                    <span className="text-lg">{layer.icon}</span>
-                    <div>
-                      <p className="text-xs font-bold text-ink">{layer.product}</p>
-                      <p className="text-[10px] text-muted">{layer.name}</p>
+                  <div key={i} className="flex items-center gap-3 bg-bg-soft rounded-xl px-4 py-3">
+                    <span className="text-2xl shrink-0">{layer.icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-black text-ink leading-tight">{layer.product}</p>
+                      <p className="text-xs text-muted leading-snug mt-0.5">{layer.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
+              <p className="text-xs text-muted mt-3 text-right border-t border-border/40 pt-3">הערכה: {recipe.estimate}</p>
             </div>
 
-            {/* ── CTA — "your turn" ── */}
-            <div className="bg-ink rounded-2xl overflow-hidden">
-              <div className="p-8 text-center text-white">
-                <p className="text-gold text-xs font-bold uppercase tracking-widest mb-3">עכשיו התור שלך</p>
-                <h4 className="font-heading font-black text-2xl mb-3">רוצה את זה בחדר שלך?</h4>
-                <p className="text-white/60 text-sm mb-6 max-w-md mx-auto">שלח לנו תמונה של החדר ← מהנדס התאורה שלנו יבנה לך פתרון מותאם עם המוצרים שראית. בחינם, בלי התחייבות.</p>
-                <a href={waUrl} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-black text-lg px-10 py-4 rounded-xl hover:bg-[#1ebe5d] transition-all hover:shadow-lg hover:-translate-y-0.5">
-                  {WA_ICON} שלח תמונה של החדר שלך
-                </a>
-                <div className="flex items-center justify-center gap-6 mt-5 text-white/40 text-xs">
-                  <span className="flex items-center gap-1">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    תגובה תוך שעות
-                  </span>
-                  <span>•</span>
-                  <span>ייעוץ חינם</span>
-                  <span>•</span>
-                  <span>בלי התחייבות</span>
+            {/* ── CTA ── */}
+            <div className="space-y-3 mb-6">
+              <a href={waUrl} target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 bg-[#25D366] text-white font-black text-sm px-5 py-4 rounded-2xl w-full shadow-md">
+                {WA_ICON}
+                <div className="text-right">
+                  <p className="leading-tight">שלח תמונה של החדר שלך</p>
+                  <p className="text-[11px] font-normal text-white/80">נבנה לך פתרון מותאם · חינם</p>
                 </div>
-              </div>
-              <div className="border-t border-white/10 px-8 py-4 flex justify-center">
-                <a href="tel:086326059"
-                  className="inline-flex items-center gap-2 text-white/50 hover:text-white text-sm transition-colors">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  מעדיף לדבר? התקשר למשרד
-                </a>
-              </div>
+              </a>
+              <button
+                onClick={() => document.getElementById('catalog')?.scrollIntoView({behavior:'smooth'})}
+                className="flex items-center justify-center gap-3 bg-ink text-white font-black text-sm px-5 py-4 rounded-2xl w-full shadow-md">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <div className="text-right">
+                  <p className="leading-tight">עבור לקטלוג</p>
+                  <p className="text-[11px] font-normal text-white/60">חפש מוצרים בעצמך</p>
+                </div>
+              </button>
+              <p className="text-center">
+                <a href="tel:086326059" className="text-muted text-xs">מעדיף לדבר? התקשר 08-632-6059</a>
+              </p>
             </div>
 
-            <div className="text-center mt-6">
+            <div className="text-center">
               <button onClick={() => { setStep(1); setRoom(null); setMood(null); }}
                 className="text-muted text-xs hover:text-ink transition-colors underline underline-offset-4">
                 התחל מחדש
               </button>
+            </div>
+          </div>
+        )}
+
+        {/* ── DRAWER — נפתח בלחיצה על תמונה ── */}
+        {drawerImg && (
+          <div className="fixed inset-0 z-50 flex flex-col justify-end" onClick={() => setDrawerImg(null)}>
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"/>
+            {/* panel — גובה קבוע, כפתורים דביקים בתחתית */}
+            <div className="relative bg-white rounded-t-3xl shadow-2xl flex flex-col" style={{maxHeight:'85vh'}}
+              onClick={e => e.stopPropagation()}>
+
+              {/* תמונה + X */}
+              <div className="relative overflow-hidden rounded-t-3xl shrink-0" style={{height:'200px'}}>
+                <img src={drawerImg.img} alt={drawerImg.cap} className="w-full h-full object-cover"/>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"/>
+                <p className="absolute bottom-3 right-4 text-white font-heading font-black text-base leading-tight">{drawerImg.cap}</p>
+                <button onClick={() => setDrawerImg(null)}
+                  className="absolute top-3 left-3 bg-black/40 backdrop-blur-sm rounded-full p-2 text-white">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+
+              {/* תוכן גלילה */}
+              <div className="overflow-y-auto flex-1 px-5 pt-4 pb-2">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-muted mb-2">מה בתמונה</p>
+                <div className="space-y-2">
+                  {recipe && recipe.layers.map((layer, i) => (
+                    <div key={i} className="flex items-center gap-3 bg-bg-soft rounded-xl px-3 py-2.5 border border-border/50">
+                      <span className="text-lg shrink-0">{layer.icon}</span>
+                      <div>
+                        <p className="text-sm font-bold text-ink leading-tight">{layer.product}</p>
+                        <p className="text-[11px] text-muted leading-tight">{layer.name}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* כפתורים — דביקים בתחתית */}
+              <div className="shrink-0 px-5 pt-3 pb-5 space-y-2.5 border-t border-border/30 bg-white">
+                <a href={waUrl} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 bg-[#25D366] text-white font-black text-sm px-5 py-3.5 rounded-2xl w-full">
+                  {WA_ICON}
+                  <div className="text-right">
+                    <p className="leading-tight">שלח תמונה של החדר שלך</p>
+                    <p className="text-[11px] font-normal text-white/80">נבנה לך פתרון מותאם · חינם</p>
+                  </div>
+                </a>
+                <button
+                  onClick={() => { setDrawerImg(null); document.getElementById('catalog')?.scrollIntoView({behavior:'smooth'}); }}
+                  className="flex items-center justify-center gap-3 bg-ink text-white font-black text-sm px-5 py-3.5 rounded-2xl w-full">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                  <div className="text-right">
+                    <p className="leading-tight">עבור לקטלוג</p>
+                    <p className="text-[11px] font-normal text-white/60">חפש מוצרים בעצמך</p>
+                  </div>
+                </button>
+                <p className="text-center">
+                  <a href="tel:086326059" className="text-muted text-xs">מעדיף לדבר? התקשר 08-632-6059</a>
+                </p>
+              </div>
             </div>
           </div>
         )}
