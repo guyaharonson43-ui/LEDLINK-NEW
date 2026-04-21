@@ -31782,6 +31782,33 @@ function parseStripDesc(desc) {
     type:  /COB/i.test(desc)?'COB':/נאון/.test(desc)?'נאון':/זיגזג/.test(desc)?'זיגזג':/דיגיטלי/.test(desc)?'דיגיטלי':'סטנדרט',
   };
 }
+function getStripMeta(p) {
+  const d = parseStripDesc(p.desc || '');
+  const name = (p.name || '').toUpperCase();
+  const sub  = p.subCategory || '';
+  // IP: specs first, then desc
+  const ip = p.specs?.ip || d.ip || '';
+  // Power: specs first ("8W/m" → 8), then desc
+  const power = d.power !== undefined && d.power !== null ? d.power
+    : p.specs?.power ? parseFloat(p.specs.power) : null;
+  // Color
+  let color = d.color;
+  if (!p.desc) {
+    if (/RGBW/i.test(name)) color = 'RGBW';
+    else if (/RGB/i.test(name) || sub === 'RGB') color = 'RGB';
+    else color = 'לבן';
+  }
+  // Type
+  let type = d.type;
+  if (!p.desc) {
+    if (sub === 'COB' || /COB|DOB/i.test(name)) type = 'COB';
+    else if (sub === 'Neon' || /NEON/i.test(name) || /נאון/.test(name)) type = 'נאון';
+    else if (sub === 'SPI' || /\bSPI\b/i.test(name)) type = 'דיגיטלי';
+    else if (/3D/i.test(name)) type = 'זיגזג';
+    else type = 'סטנדרט';
+  }
+  return { ip, power, type, color };
+}
 
 /* ── FILTER CHIP ── */
 const FilterChip = ({ label, active, onClick }) => (
@@ -31963,8 +31990,8 @@ const FilterSidebar = ({ products, filters, setFilters, onReset }) => {
   /* Strip-specific counts */
   const stTypeCounts={}, stColorCounts={};
   if (isStripMode) {
-    STRIP_TYPE_OPTIONS.slice(1).forEach(v => { stTypeCounts[v] = catProds.filter(p => parseStripDesc(p.desc).type === v).length; });
-    STRIP_COLOR_OPTIONS.slice(1).forEach(v => { stColorCounts[v] = catProds.filter(p => parseStripDesc(p.desc).color === v).length; });
+    STRIP_TYPE_OPTIONS.slice(1).forEach(v => { stTypeCounts[v] = catProds.filter(p => getStripMeta(p).type === v).length; });
+    STRIP_COLOR_OPTIONS.slice(1).forEach(v => { stColorCounts[v] = catProds.filter(p => getStripMeta(p).color === v).length; });
   }
 
   const hasActive = cat !== 'הכל' || ip !== 'הכל' || power !== 'הכל' || voltage !== 'הכל' || output !== 'הכל' || dimming !== 'הכל' || stripType !== 'הכל' || stripColor !== 'הכל';
@@ -32100,7 +32127,7 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
         const w = parseFloat(raw);
         if (isNaN(w) || w < range.min || w > range.max) return false;
       }
-      const s = parseStripDesc(p.desc);
+      const s = getStripMeta(p);
       if (type  !== 'הכל' && s.type  !== type)  return false;
       if (color !== 'הכל' && s.color !== color) return false;
     }
