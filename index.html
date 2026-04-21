@@ -30919,8 +30919,8 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
   useEffect(() => { setVisible(16); }, [cat, search, psF, stripF, proMode]);
 
   function matchesFilters(p) {
-    /* במצב לקוח קצה — מסתירים קטגוריות מקצועיות */
-    if (!proMode && PRO_CATS.has(p.category)) return false;
+    /* במצב לקוח פרטי — מסתירים קטגוריות מקצועיות רק ב"הכל" */
+    if (!proMode && cat === 'הכל' && PRO_CATS.has(p.category)) return false;
     /* במצב מקצועי עם קטגוריה נבחרת — מסנן לפי קטגוריה */
     if (cat !== 'הכל' && p.category !== cat) return false;
     if (search) {
@@ -31007,9 +31007,9 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
         {/* Category tabs */}
         <div className="relative mb-8">
           <div className="flex gap-2 overflow-x-auto pb-3 no-scroll">
-            {['הכל', ...CATS_LIST.filter(c => proMode ? PRO_CATS.has(c) : !PRO_CATS.has(c))].map(c => (
+            {['הכל', ...CATS_LIST].map(c => (
               <button key={c}
-                onClick={() => { setCat(c); resetFilters(); }}
+                onClick={() => { setCat(c); resetFilters(); if (PRO_CATS.has(c)) setProMode(true); }}
                 className={`shrink-0 px-4 py-2 text-sm font-bold rounded border transition-colors whitespace-nowrap
                   ${cat === c
                     ? (proMode ? 'bg-slate-900 text-gold border-slate-700' : 'bg-ink text-white border-ink')
