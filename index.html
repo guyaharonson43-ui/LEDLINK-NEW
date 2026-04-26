@@ -30709,22 +30709,21 @@ const Hero = ({ onHome, onPro }) => (
 
     <div className="relative z-10 max-w-7xl mx-auto px-8 w-full">
       <div className="max-w-2xl">
-        <span className="section-label text-gold-light">חנות המפעל לתאורת LED · רחובות</span>
+        <span className="section-label text-gold-light" style={{fontSize:'14px'}}>חנות המפעל לתאורת LED · רחובות</span>
         <h1 className="font-heading font-black text-3xl sm:text-5xl md:text-6xl text-white leading-tight mt-2 mb-5">
           תאורה שאדריכלים<br/>
           <span className="text-gold-light">מזמינים לבית שלך</span>
         </h1>
         <p className="text-gray-300 text-lg font-light leading-relaxed mb-5 max-w-md">
-          ישירות מהמפעל — בלי אמצעים. מלאי מדף מוכן לאיסוף, ייצור מותאם תוך שעות.<br/>
-          <span className="text-gold-light/90 font-medium">15 שנות ניסיון. תכנון איטלקי. ייצור ישראלי.</span>
+          אנחנו מקצרים את הדרך בין החזון האדריכלי לביצוע בשטח. ב-LEDLink אתם קונים ישירות מהיצרן, עם ידע הנדסי מקצועי ודיוק טכני ללא פשרות — מהמדף או בהתאמה אישית.
         </p>
 
         {/* USP bullets — 3 quick value props */}
         <ul className="space-y-2 mb-7 max-w-md">
           {[
-            'מלאי מדף מלא — איסוף עצמי מיידי מרחובות',
-            'ייצור מותאם אישית תוך שעות, לא שבועות',
-            'ידע של 15 שנה בתאורה מקצועית',
+            'ייצור כחול-לבן במפעלנו ברחובות',
+            'פתרונות טכניים למפרטים מורכבים',
+            'אחריות יצרן ישירה וליווי מקצועי',
           ].map(line => (
             <li key={line} className="flex items-center gap-2 text-sm text-white/85">
               <span className="w-5 h-5 rounded-full bg-gold/20 text-gold-light flex items-center justify-center shrink-0">
@@ -30744,8 +30743,7 @@ const Hero = ({ onHome, onPro }) => (
           </button>
           <button onClick={onPro}
             className="group flex flex-col items-center gap-1 border-2 border-white/40 hover:border-gold hover:bg-white/5 text-white px-8 py-4 transition-colors text-right">
-            <span className="font-heading font-black text-base tracking-wide">גלה את הקטלוג לבד</span>
-            <span className="text-xs text-white/60 font-light">קטלוג מלא · הצעת מחיר מהירה</span>
+            <span className="font-heading font-black text-base tracking-wide">לצפייה בקטלוג המוצרים</span>
           </button>
         </div>
       </div>
@@ -30980,7 +30978,7 @@ const FactorySection = () => (
       <div className="text-center mb-14">
         <span className="inline-block bg-gold/20 text-gold text-[11px] font-bold tracking-[0.18em] uppercase px-5 py-2 rounded-full mb-7">למה לדלינק?</span>
         <h2 className="font-heading font-black text-4xl md:text-5xl text-white leading-tight mb-5">
-          בוא אלינו, שתה קפה —<br/>
+          בוא/י אלינו, שתה/י קפה —<br/>
           <span className="text-gold">נייצר לך בינתיים.</span>
         </h2>
         <p className="text-white/55 text-lg max-w-2xl mx-auto leading-relaxed">
@@ -31018,7 +31016,7 @@ const FactorySection = () => (
               </svg>
             ),
             title: 'חומרים ברמה אחרת',
-            badge: 'Grade A בלבד',
+            badge: 'פרמיום',
             body: 'שבבי LED ממותגים מובילים, אלומיניום בדרגה תעשייתית, הנעה טכנית ברמה אירופאית. איכות שתרגיש ביד — ותשים לב אליה עוד שנים.',
           },
         ].map(({icon, title, badge, body}) => (
@@ -31852,7 +31850,16 @@ const StripFilters = ({ filters, setFilters, count }) => {
 /* קטגוריות מקצועיות (B2B) — מוסתרות כברירת מחדל */
 const PRO_CATS = new Set(['פרופילים', 'סטריפ LED', 'ספקי מתח']);
 
-const CATS_LIST = [
+const CATS_CONSUMER_FIRST = [
+  'צמודי תקרה פנים','צמודי תקרה דקורטיבי','שקועי תקרה פנים','צמודי תקרה ספוט',
+  'צמודי קיר פנים','שקועי קיר פנים','תלויים דקורטיבי',
+  'פסי צבירה פנים','פס צבירה מגנטי',
+  'מנורות עמידה','תאורה לשולחנות תצוגה',
+  'דוקרני גינה','עמודוני חוץ','צמודי קיר חוץ','שקועי קיר חוץ','צמודי תקרה חוץ','תלויים חוץ','שקועי רצפה חוץ','תאורה סולארית',
+  'נורות LED',
+  'פרופילים','סטריפ LED','ספקי מתח',
+];
+const CATS_PRO_FIRST = [
   'פרופילים','סטריפ LED','ספקי מתח',
   'צמודי תקרה פנים','צמודי תקרה דקורטיבי','שקועי תקרה פנים','צמודי תקרה ספוט',
   'צמודי קיר פנים','שקועי קיר פנים','תלויים דקורטיבי',
@@ -31861,6 +31868,7 @@ const CATS_LIST = [
   'דוקרני גינה','עמודוני חוץ','צמודי קיר חוץ','שקועי קיר חוץ','צמודי תקרה חוץ','תלויים חוץ','שקועי רצפה חוץ','תאורה סולארית',
   'נורות LED',
 ];
+const CATS_LIST = CATS_PRO_FIRST;
 
 /* ── FILTER SECTION PLACEHOLDER (unused) ── */
 const FilterSection = ({ title, children, defaultOpen = true }) => {
@@ -32123,8 +32131,8 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
 
         {/* Category tabs */}
         <div className="relative mb-8">
-          <div className="flex gap-2 overflow-x-auto pb-3 no-scroll">
-            {['הכל', ...CATS_LIST].map(c => (
+          <div className="flex flex-wrap gap-2">
+            {['הכל', ...(proMode ? CATS_PRO_FIRST : CATS_CONSUMER_FIRST)].map(c => (
               <button key={c}
                 onClick={() => { setCat(c); resetFilters(); if (PRO_CATS.has(c)) setProMode(true); }}
                 className={`shrink-0 px-4 py-2 text-sm font-bold rounded border transition-colors whitespace-nowrap
