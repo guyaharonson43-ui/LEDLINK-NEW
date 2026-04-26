@@ -31704,9 +31704,10 @@ const POWER_RANGES     = [
   {label:'20–60W',min:20,max:60},{label:'60–100W',min:60,max:100},
   {label:'100–200W',min:100,max:200},{label:'200W+',min:200,max:99999},
 ];
-const STRIP_IP_OPTIONS    = ['הכל','IP20','IP65','IP67','IP68'];
-const STRIP_TYPE_OPTIONS  = ['הכל','סטנדרט','COB','נאון','זיגזג','דיגיטלי'];
-const STRIP_COLOR_OPTIONS = ['הכל','לבן','RGB','RGBW'];
+const STRIP_IP_OPTIONS      = ['הכל','IP20','IP65','IP67','IP68'];
+const STRIP_TYPE_OPTIONS    = ['הכל','סטנדרט','COB','נאון','זיגזג','דיגיטלי'];
+const STRIP_COLOR_OPTIONS   = ['הכל','לבן','RGB','RGBW'];
+const STRIP_VOLTAGE_OPTIONS = ['הכל','12V','24V','48V'];
 const STRIP_POWER_RANGES  = [
   {label:'הכל',min:0,max:99999},{label:'עד 10W',min:0,max:10},
   {label:'10–15W',min:10,max:15},{label:'15–20W',min:15,max:20},{label:'20W+',min:20,max:99999},
@@ -31749,7 +31750,9 @@ function getStripMeta(p) {
     else if (/3D/i.test(name)) type = 'זיגזג';
     else type = 'סטנדרט';
   }
-  return { ip, power, type, color };
+  const voltage = p.specs?.voltage || (p.specs?.inputVoltage) ||
+    ((p.desc||'').match(/\b(12|24|48)V\b/)?.[0] ? (p.desc.match(/\b(12|24|48)V\b/)[0]) : '');
+  return { ip, power, type, color, voltage };
 }
 
 /* ── FILTER CHIP ── */
@@ -31804,7 +31807,7 @@ const PowerSupplyFilters = ({ filters, setFilters, count }) => {
 
 /* ── STRIP FILTERS ── */
 const StripFilters = ({ filters, setFilters, count }) => {
-  const reset = () => setFilters({ip:'הכל',type:'הכל',color:'הכל',power:'הכל'});
+  const reset = () => setFilters({ip:'הכל',type:'הכל',color:'הכל',power:'הכל',voltage:'הכל'});
   const hasActive = Object.values(filters).some(v => v !== 'הכל');
   return (
     <div className="bg-white rounded-lg border border-border p-6 mb-8">
@@ -31818,7 +31821,11 @@ const StripFilters = ({ filters, setFilters, count }) => {
           {hasActive && <button onClick={reset} className="text-xs text-gold hover:text-gold-dark transition-colors font-semibold">נקה הכל</button>}
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div>
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted mb-2">מתח (Voltage)</p>
+          <div className="flex flex-wrap gap-1.5">{STRIP_VOLTAGE_OPTIONS.map(v=><FilterChip key={v} label={v} active={filters.voltage===v} onClick={()=>setFilters(f=>({...f,voltage:v}))}/>)}</div>
+        </div>
         <div>
           <p className="text-[11px] font-bold uppercase tracking-widest text-muted mb-2">הגנה מים (IP)</p>
           <div className="flex flex-wrap gap-1.5">{STRIP_IP_OPTIONS.map(v=><FilterChip key={v} label={v} active={filters.ip===v} onClick={()=>setFilters(f=>({...f,ip:v}))}/>)}</div>
@@ -32016,7 +32023,7 @@ const FilterSidebar = ({ products, filters, setFilters, onReset }) => {
 };
 
 const INIT_PS    = { voltage:'הכל', ip:'הכל', dimming:'הכל', output:'הכל', power:'הכל' };
-const INIT_STRIP = { ip:'הכל', type:'הכל', color:'הכל', power:'הכל' };
+const INIT_STRIP = { ip:'הכל', type:'הכל', color:'הכל', power:'הכל', voltage:'הכל' };
 
 const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
   const [cat,     setCat]     = useState(initCat || 'הכל');
@@ -32058,7 +32065,7 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
       if (dimming !== 'הכל' && !(p.specs?.dimming||[]).includes(dimming)) return false;
     }
     if (isStripMode) {
-      const { ip, type, color, power } = stripF;
+      const { ip, type, color, power, voltage } = stripF;
       if (ip !== 'הכל') {
         const pIp = p.specs?.ip || ((p.desc||'').match(/IP(\d+)/i) ? 'IP'+(p.desc.match(/IP(\d+)/i)[1]) : null);
         if (pIp !== ip) return false;
@@ -32070,8 +32077,9 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
         if (isNaN(w) || w < range.min || w > range.max) return false;
       }
       const s = getStripMeta(p);
-      if (type  !== 'הכל' && s.type  !== type)  return false;
-      if (color !== 'הכל' && s.color !== color) return false;
+      if (type    !== 'הכל' && s.type    !== type)    return false;
+      if (color   !== 'הכל' && s.color   !== color)   return false;
+      if (voltage !== 'הכל' && s.voltage !== voltage) return false;
     }
     return true;
   }
