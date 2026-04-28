@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <script type="text/javascript">
@@ -31471,6 +31471,7 @@ const AddToCartBtn = ({ onClick }) => {
 };
 
 /* ── PRODUCT DATA SHEETS ── */
+// catalog + datasheet לכל מוצר סטריפ LED
 const PRODUCT_DATASHEETS = {
   '3535':      [{ label: 'LINK 3535 — דף נתונים', file: 'attachments/LEDLINK_LINK 3535.pdf' }],
   '3030 \u05e4\u05d9\u05e0\u05ea\u05d9': [{ label: 'LINK 3030 — דף נתונים', file: 'attachments/LEDLINK_LINK 3030.pdf' }],
@@ -31479,6 +31480,120 @@ const PRODUCT_DATASHEETS = {
   'טיובה 60':  [
     { label: 'LINK R60 — דף נתונים', file: 'attachments/LEDLINK_LINK R60.pdf' },
   ],
+  // סטריפ LED — מקוריים (LEDLink)
+  "סטריפ LED זיגזג 4.8W": [{ label: "דף קטלוגי — 3D Series", file: "datasheets/3D.pdf" }, { label: "דף נתונים — D", file: "datasheets/DS_3D.pdf" }],
+  "סטריפ LED דיגיטלי 24V": [{ label: "דף קטלוגי — ST24560CT", file: "datasheets/ST24560CT.pdf" }, { label: "דף נתונים — T24560CT", file: "datasheets/DS_ST24560CT.pdf" }],
+  "סטריפ LED 10W IP20": [{ label: "דף קטלוגי — D24160", file: "datasheets/D24160.pdf" }, { label: "דף נתונים — 24160CT D241610CT", file: "datasheets/DS_D24160CT_D241610CT.pdf" }],
+  "סטריפ LED 15W IP20": [{ label: "דף קטלוגי — D24160", file: "datasheets/D24160.pdf" }, { label: "דף נתונים — 24160CT D241610CT", file: "datasheets/DS_D24160CT_D241610CT.pdf" }],
+  "סטריפ LED 12W IP65": [{ label: "דף קטלוגי — B24 IP65", file: "datasheets/B24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_B24_IP65.pdf" }],
+  "סטריפ LED 16W IP65": [{ label: "דף קטלוגי — B24 IP65", file: "datasheets/B24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_B24_IP65.pdf" }],
+  "סטריפ LED 20W IP65": [{ label: "דף קטלוגי — B24 IP65", file: "datasheets/B24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_B24_IP65.pdf" }],
+  "סטריפ LED 50W IP20": [{ label: "דף קטלוגי — ST24560CT", file: "datasheets/ST24560CT.pdf" }, { label: "דף נתונים — T24560CT", file: "datasheets/DS_ST24560CT.pdf" }],
+  "סטריפ LED DOB 15W IP20": [{ label: "דף קטלוגי — DOB", file: "datasheets/DOB.pdf" }, { label: "דף נתונים — OB", file: "datasheets/DS_DOB.pdf" }],
+  "סטריפ LED RGBW 20W IP20": [{ label: "דף קטלוגי — S24120RW", file: "datasheets/S24120RW_S2412ARW.pdf" }, { label: "דף נתונים — 24120RW S2412ARW", file: "datasheets/DS_S24120RW_S2412ARW.pdf" }],
+  "סטריפ LED 14.4W IP68": [{ label: "דף קטלוגי — H24 IP68", file: "datasheets/H24_IP68.pdf" }, { label: "דף נתונים — 24 IP68", file: "datasheets/DS_H24_IP68.pdf" }],
+  "סטריפ LED 9.6W IP68": [{ label: "דף קטלוגי — H24 IP68", file: "datasheets/H24_IP68.pdf" }, { label: "דף נתונים — 24 IP68", file: "datasheets/DS_H24_IP68.pdf" }],
+  "נאון סטריפ LED TOP 14.4W IP67": [{ label: "דף קטלוגי — N2416H", file: "datasheets/N2416H_N2414H1.pdf" }, { label: "דף נתונים — 2416H N2414H", file: "datasheets/DS_N2416H_N2414H.pdf" }],
+  "סטריפ LED COB 14.4W IP20": [{ label: "דף קטלוגי — COB", file: "datasheets/COB.pdf" }, { label: "דף נתונים — OB", file: "datasheets/DS_COB.pdf" }],
+  "נאון סטריפ LED SIDE 18W IP67": [{ label: "דף קטלוגי — N2412L", file: "datasheets/N2412L.pdf" }, { label: "דף נתונים — 2412L", file: "datasheets/DS_N2412L.pdf" }],
+  "סטריפ LED RGB IP67 14.4W": [{ label: "דף קטלוגי — N2412B0RG", file: "datasheets/N2412B0RG.pdf" }, { label: "דף נתונים — 2412BRG", file: "datasheets/DS_N2412BRG.pdf" }],
+  "סטריפ LED RGBW 20W IP65": [{ label: "דף קטלוגי — S24120RW", file: "datasheets/S24120RW_S2412ARW.pdf" }, { label: "דף נתונים — 24120RW S2412ARW", file: "datasheets/DS_S24120RW_S2412ARW.pdf" }],
+  // סטריפ LED — QLT
+  "3D2460": [{ label: "דף קטלוגי — 3D", file: "datasheets/3D.pdf" }, { label: "דף נתונים — D", file: "datasheets/DS_3D.pdf" }],
+  "A24112": [{ label: "דף קטלוגי — A24 FOOD", file: "datasheets/A24_FOOD.pdf" }, { label: "דף נתונים — 24 FOOD", file: "datasheets/DS_A24_FOOD.pdf" }],
+  "A2411C": [{ label: "דף קטלוגי — A24 CRI95 IP20", file: "datasheets/A24_CRI95_IP20.pdf" }, { label: "דף נתונים — 24C IP20", file: "datasheets/DS_A24C_IP20.pdf" }],
+  "A2411CA": [{ label: "דף קטלוגי — A24 CRI95 IP65", file: "datasheets/A24_CRI95_IP65.pdf" }, { label: "דף נתונים — 24CA IP65", file: "datasheets/DS_A24CA_IP65.pdf" }],
+  "A2411CI": [{ label: "דף קטלוגי — A24 CRI95 IP68", file: "datasheets/A24_CRI95_IP68.pdf" }, { label: "דף נתונים — 24CI IP68", file: "datasheets/DS_A24CI_IP68.pdf" }],
+  "A2416C": [{ label: "דף קטלוגי — A24 CRI95 IP20", file: "datasheets/A24_CRI95_IP20.pdf" }, { label: "דף נתונים — 24C IP20", file: "datasheets/DS_A24C_IP20.pdf" }],
+  "A2416CA": [{ label: "דף קטלוגי — A24 CRI95 IP65", file: "datasheets/A24_CRI95_IP65.pdf" }, { label: "דף נתונים — 24CA IP65", file: "datasheets/DS_A24CA_IP65.pdf" }],
+  "A2416CI": [{ label: "דף קטלוגי — A24 CRI95 IP68", file: "datasheets/A24_CRI95_IP68.pdf" }, { label: "דף נתונים — 24CI IP68", file: "datasheets/DS_A24CI_IP68.pdf" }],
+  "A2424C": [{ label: "דף קטלוגי — A24 CRI95 IP20", file: "datasheets/A24_CRI95_IP20.pdf" }, { label: "דף נתונים — 24C IP20", file: "datasheets/DS_A24C_IP20.pdf" }],
+  "A2424CA": [{ label: "דף קטלוגי — A24 CRI95 IP65", file: "datasheets/A24_CRI95_IP65.pdf" }],
+  "B24080": [{ label: "דף קטלוגי — B24 IP20", file: "datasheets/B24_IP20.pdf" }, { label: "דף נתונים — 24 IP20", file: "datasheets/DS_B24_IP20.pdf" }],
+  "B24080A": [{ label: "דף קטלוגי — B24 IP65", file: "datasheets/B24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_B24_IP65.pdf" }],
+  "B24128": [{ label: "דף קטלוגי — B24 IP20", file: "datasheets/B24_IP20.pdf" }, { label: "דף נתונים — 24 IP20", file: "datasheets/DS_B24_IP20.pdf" }],
+  "B24128A": [{ label: "דף קטלוגי — B24 IP65", file: "datasheets/B24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_B24_IP65.pdf" }],
+  "B24160": [{ label: "דף קטלוגי — B24 IP20", file: "datasheets/B24_IP20.pdf" }, { label: "דף נתונים — 24 IP20", file: "datasheets/DS_B24_IP20.pdf" }],
+  "B24160A": [{ label: "דף קטלוגי — B24 IP65", file: "datasheets/B24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_B24_IP65.pdf" }],
+  "COB2488": [{ label: "דף קטלוגי — COB", file: "datasheets/COB.pdf" }, { label: "דף נתונים — OB", file: "datasheets/DS_COB.pdf" }],
+  "COB2L15": [{ label: "דף קטלוגי — COB", file: "datasheets/COB.pdf" }, { label: "דף נתונים — OB", file: "datasheets/DS_COB.pdf" }],
+  "COB845A": [{ label: "דף קטלוגי — COB845A", file: "datasheets/COB845A.pdf" }, { label: "דף נתונים — OB845A", file: "datasheets/DS_COB845A.pdf" }],
+  "D241600CT": [{ label: "דף קטלוגי — D24160CT D241610CT", file: "datasheets/D24160CT_D241610CT.pdf" }, { label: "דף נתונים — 24160CT D241610CT", file: "datasheets/DS_D24160CT_D241610CT.pdf" }],
+  "D241608": [{ label: "דף קטלוגי — D24160", file: "datasheets/D24160.pdf" }, { label: "דף נתונים — 24160", file: "datasheets/DS_D24160.pdf" }],
+  "D241610": [{ label: "דף נתונים — 24160", file: "datasheets/DS_D24160.pdf" }],
+  "D241610CT": [{ label: "דף קטלוגי — D24160CT D241610CT", file: "datasheets/D24160CT_D241610CT.pdf" }, { label: "דף נתונים — 24160CT D241610CT", file: "datasheets/DS_D24160CT_D241610CT.pdf" }],
+  "D241615": [{ label: "דף קטלוגי — D24160", file: "datasheets/D24160.pdf" }, { label: "דף נתונים — 24160", file: "datasheets/DS_D24160.pdf" }],
+  "D242006": [{ label: "דף קטלוגי — D24200", file: "datasheets/D24200.pdf" }, { label: "דף נתונים — 24200", file: "datasheets/DS_D24200.pdf" }],
+  "D242008": [{ label: "דף קטלוגי — D24200", file: "datasheets/D24200.pdf" }, { label: "דף נתונים — 24200", file: "datasheets/DS_D24200.pdf" }],
+  "D242011": [{ label: "דף קטלוגי — D24200", file: "datasheets/D24200.pdf" }, { label: "דף נתונים — 24200", file: "datasheets/DS_D24200.pdf" }],
+  "DOB2428": [{ label: "דף קטלוגי — DOB", file: "datasheets/DOB.pdf" }, { label: "דף נתונים — OB", file: "datasheets/DS_DOB.pdf" }],
+  "DOB2432 TW": [{ label: "דף קטלוגי — DOBTW", file: "datasheets/DOBTW.pdf" }, { label: "דף נתונים — OB TW", file: "datasheets/DS_DOB_TW.pdf" }],
+  "DOB2433 RGB+W": [{ label: "דף קטלוגי — DOBRGBW", file: "datasheets/DOBRGBW.pdf" }, { label: "דף נתונים — OB RGBW", file: "datasheets/DS_DOB_RGBW.pdf" }],
+  "DOBG288": [{ label: "דף קטלוגי — DOBGOLD", file: "datasheets/DOBGOLD.pdf" }, { label: "דף נתונים — OB GOLD", file: "datasheets/DS_DOB_GOLD.pdf" }],
+  "DW242027W": [{ label: "דף קטלוגי — DW", file: "datasheets/DW.pdf" }, { label: "דף נתונים — W", file: "datasheets/DS_DW.pdf" }],
+  "ES24120": [{ label: "דף קטלוגי — ES24", file: "datasheets/ES24.pdf" }, { label: "דף נתונים — S IP20", file: "datasheets/DS_ES_IP20.pdf" }],
+  "ES24180": [{ label: "דף קטלוגי — ES24", file: "datasheets/ES24.pdf" }, { label: "דף נתונים — S IP20", file: "datasheets/DS_ES_IP20.pdf" }],
+  "ES24240": [{ label: "דף קטלוגי — ES24", file: "datasheets/ES24.pdf" }, { label: "דף נתונים — S IP20", file: "datasheets/DS_ES_IP20.pdf" }],
+  "ES2460": [{ label: "דף קטלוגי — ES24", file: "datasheets/ES24.pdf" }, { label: "דף נתונים — S IP20", file: "datasheets/DS_ES_IP20.pdf" }],
+  "F241445": [{ label: "דף קטלוגי — F24 4mm", file: "datasheets/F24_4mm.pdf" }, { label: "דף נתונים — 24 140 180 210", file: "datasheets/DS_F24_140_180_210.pdf" }],
+  "F241811": [{ label: "דף קטלוגי — F24 4mm", file: "datasheets/F24_4mm.pdf" }, { label: "דף נתונים — 24 140 180 210", file: "datasheets/DS_F24_140_180_210.pdf" }],
+  "F241820": [{ label: "דף קטלוגי — F24 8mm", file: "datasheets/F24_8mm.pdf" }, { label: "דף נתונים — 241820", file: "datasheets/DS_F241820.pdf" }],
+  "F242108": [{ label: "דף קטלוגי — F24 4mm", file: "datasheets/F24_4mm.pdf" }, { label: "דף נתונים — 24 140 180 210", file: "datasheets/DS_F24_140_180_210.pdf" }],
+  "H12060": [{ label: "דף קטלוגי — H12 IP20", file: "datasheets/H12_IP20.pdf" }, { label: "דף נתונים — 12 IP20", file: "datasheets/DS_H12_IP20.pdf" }],
+  "H12060A": [{ label: "דף קטלוגי — H12 IP65", file: "datasheets/H12_IP65.pdf" }, { label: "דף נתונים — 12 IP65", file: "datasheets/DS_H12_IP65.pdf" }],
+  "H12120": [{ label: "דף קטלוגי — H12 IP20", file: "datasheets/H12_IP20.pdf" }, { label: "דף נתונים — 12 IP20", file: "datasheets/DS_H12_IP20.pdf" }],
+  "H12120A": [{ label: "דף קטלוגי — H12 IP65", file: "datasheets/H12_IP65.pdf" }, { label: "דף נתונים — 12 IP65", file: "datasheets/DS_H12_IP65.pdf" }],
+  "H24070": [{ label: "דף נתונים — 24 IP20", file: "datasheets/DS_H24_IP20.pdf" }],
+  "H24070A": [{ label: "דף קטלוגי — H24 IP65", file: "datasheets/H24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_H24_IP65.pdf" }],
+  "H24070I": [{ label: "דף קטלוגי — H24 IP68", file: "datasheets/H24_IP68.pdf" }, { label: "דף נתונים — 24 IP68", file: "datasheets/DS_H24_IP68.pdf" }],
+  "H24140": [{ label: "דף קטלוגי — H24 IP20", file: "datasheets/H24_IP20.pdf" }, { label: "דף נתונים — 24 IP20", file: "datasheets/DS_H24_IP20.pdf" }],
+  "H24140A": [{ label: "דף קטלוגי — H24 IP65", file: "datasheets/H24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_H24_IP65.pdf" }],
+  "H24140I": [{ label: "דף קטלוגי — H24 IP68", file: "datasheets/H24_IP68.pdf" }, { label: "דף נתונים — 24 IP68", file: "datasheets/DS_H24_IP68.pdf" }],
+  "H24210": [{ label: "דף קטלוגי — H24 IP20", file: "datasheets/H24_IP20.pdf" }, { label: "דף נתונים — 24 IP20", file: "datasheets/DS_H24_IP20.pdf" }],
+  "H24210A": [{ label: "דף קטלוגי — H24 IP65", file: "datasheets/H24_IP65.pdf" }, { label: "דף נתונים — 24 IP65", file: "datasheets/DS_H24_IP65.pdf" }],
+  "H24210I": [{ label: "דף קטלוגי — H24 IP68", file: "datasheets/H24_IP68.pdf" }, { label: "דף נתונים — 24 IP68", file: "datasheets/DS_H24_IP68.pdf" }],
+  "H24252": [{ label: "דף קטלוגי — H24 IP20", file: "datasheets/H24_IP20.pdf" }],
+  "H48140": [{ label: "דף קטלוגי — H48 IP20", file: "datasheets/H48_IP20.pdf" }, { label: "דף נתונים — 48 IP20", file: "datasheets/DS_H48_IP20.pdf" }],
+  "H48140A": [{ label: "דף קטלוגי — H48 IP65", file: "datasheets/H48_IP65.pdf" }, { label: "דף נתונים — 48 IP65", file: "datasheets/DS_H48_IP65.pdf" }],
+  "HV07250": [{ label: "דף קטלוגי — HV", file: "datasheets/HV.pdf" }, { label: "דף נתונים — V", file: "datasheets/DS_HV.pdf" }],
+  "K24120": [{ label: "דף קטלוגי — K24120 160 200 240 IP20", file: "datasheets/K24120_160_200_240_IP20.pdf" }, { label: "דף נתונים — 24120 160 200 240 IP20", file: "datasheets/DS_K24120_160_200_240_IP20.pdf" }],
+  "K24120A": [{ label: "דף קטלוגי — K24120 160 200 240 IP65", file: "datasheets/K24120_160_200_240_IP65.pdf" }, { label: "דף נתונים — 24120 160 200 240 IP65", file: "datasheets/DS_K24120_160_200_240_IP65.pdf" }],
+  "K24160": [{ label: "דף קטלוגי — K24120 160 200 240 IP20", file: "datasheets/K24120_160_200_240_IP20.pdf" }, { label: "דף נתונים — 24120 160 200 240 IP20", file: "datasheets/DS_K24120_160_200_240_IP20.pdf" }],
+  "K24160A": [{ label: "דף קטלוגי — K24120 160 200 240 IP65", file: "datasheets/K24120_160_200_240_IP65.pdf" }, { label: "דף נתונים — 24120 160 200 240 IP65", file: "datasheets/DS_K24120_160_200_240_IP65.pdf" }],
+  "K24200": [{ label: "דף קטלוגי — K24120 160 200 240 IP20", file: "datasheets/K24120_160_200_240_IP20.pdf" }, { label: "דף נתונים — 24120 160 200 240 IP20", file: "datasheets/DS_K24120_160_200_240_IP20.pdf" }],
+  "K24200A": [{ label: "דף קטלוגי — K24120 160 200 240 IP65", file: "datasheets/K24120_160_200_240_IP65.pdf" }, { label: "דף נתונים — 24120 160 200 240 IP65", file: "datasheets/DS_K24120_160_200_240_IP65.pdf" }],
+  "K24240": [{ label: "דף קטלוגי — K24120 160 200 240 IP20", file: "datasheets/K24120_160_200_240_IP20.pdf" }, { label: "דף נתונים — 24120 160 200 240 IP20", file: "datasheets/DS_K24120_160_200_240_IP20.pdf" }],
+  "K24240A": [{ label: "דף קטלוגי — K24120 160 200 240 IP65", file: "datasheets/K24120_160_200_240_IP65.pdf" }, { label: "דף נתונים — 24120 160 200 240 IP65", file: "datasheets/DS_K24120_160_200_240_IP65.pdf" }],
+  "N2412B0RG": [{ label: "דף קטלוגי — N2412B0RG", file: "datasheets/N2412B0RG.pdf" }, { label: "דף נתונים — 2412BRG", file: "datasheets/DS_N2412BRG.pdf" }],
+  "N2412B1RG": [{ label: "דף קטלוגי — N2412B0RG", file: "datasheets/N2412B0RG.pdf" }, { label: "דף נתונים — 2412BRG", file: "datasheets/DS_N2412BRG.pdf" }],
+  "N2412F": [{ label: "דף קטלוגי — N2412F", file: "datasheets/N2412F.pdf" }, { label: "דף נתונים — 2412F", file: "datasheets/DS_N2412F.pdf" }],
+  "N2412L": [{ label: "דף קטלוגי — N2412L", file: "datasheets/N2412L.pdf" }, { label: "דף נתונים — 2412L", file: "datasheets/DS_N2412L.pdf" }],
+  "N2414H0RG": [{ label: "דף קטלוגי — N2414HRG", file: "datasheets/N2414HRG.pdf" }, { label: "דף נתונים — 2414H0RG N2414H1RG", file: "datasheets/DS_N2414H0RG_N2414H1RG.pdf" }],
+  "N2414H1": [{ label: "דף קטלוגי — N2416H N2414H1", file: "datasheets/N2416H_N2414H1.pdf" }, { label: "דף נתונים — 2416H N2414H", file: "datasheets/DS_N2416H_N2414H.pdf" }],
+  "N2414H1RG": [{ label: "דף קטלוגי — N2414HRG", file: "datasheets/N2414HRG.pdf" }, { label: "דף נתונים — 2414H0RG N2414H1RG", file: "datasheets/DS_N2414H0RG_N2414H1RG.pdf" }],
+  "N2416H": [{ label: "דף קטלוגי — N2416H N2414H1", file: "datasheets/N2416H_N2414H1.pdf" }, { label: "דף נתונים — 2416H N2414H", file: "datasheets/DS_N2416H_N2414H.pdf" }],
+  "N3X8 MINI NEON": [{ label: "דף קטלוגי — N03X08", file: "datasheets/N03X08.pdf" }, { label: "דף נתונים — 0308", file: "datasheets/DS_N0308.pdf" }],
+  "N4x10": [{ label: "דף קטלוגי — N0410", file: "datasheets/N0410.pdf" }, { label: "דף נתונים — 0410", file: "datasheets/DS_N0410.pdf" }],
+  "N4X10T": [{ label: "דף קטלוגי — N04X10T", file: "datasheets/N04X10T.pdf" }, { label: "דף נתונים — 0410T", file: "datasheets/DS_N0410T.pdf" }],
+  "N8X8 NEON 3D": [{ label: "דף קטלוגי — N08X08", file: "datasheets/N08X08.pdf" }, { label: "דף נתונים — 0808", file: "datasheets/DS_N0808.pdf" }],
+  "NP2436834": [{ label: "דף קטלוגי — NP", file: "datasheets/NP.pdf" }, { label: "דף נתונים — P", file: "datasheets/DS_NP.pdf" }],
+  "NT1811 360° strip NEON LED TUBE": [{ label: "דף קטלוגי — NT18 23", file: "datasheets/NT18_23.pdf" }, { label: "דף נתונים — T1811 2314", file: "datasheets/DS_NT1811_2314.pdf" }],
+  "NT2314 360° strip NEON LED TUBE": [{ label: "דף קטלוגי — NT18 23", file: "datasheets/NT18_23.pdf" }, { label: "דף נתונים — T1811 2314", file: "datasheets/DS_NT1811_2314.pdf" }],
+  "NTR2416 NEON TRIANGLE": [{ label: "דף קטלוגי — NTR24", file: "datasheets/NTR24.pdf" }, { label: "דף נתונים — TR24", file: "datasheets/DS_NTR24.pdf" }],
+  "S24120RW": [{ label: "דף קטלוגי — S24120RW S2412ARW", file: "datasheets/S24120RW_S2412ARW.pdf" }, { label: "דף נתונים — 24120RW S2412ARW", file: "datasheets/DS_S24120RW_S2412ARW.pdf" }],
+  "S2412ARW": [{ label: "דף קטלוגי — S24120RW S2412ARW", file: "datasheets/S24120RW_S2412ARW.pdf" }, { label: "דף נתונים — 24120RW S2412ARW", file: "datasheets/DS_S24120RW_S2412ARW.pdf" }],
+  "SPI COB RGB+W": [{ label: "דף קטלוגי — SPICOBRGBW", file: "datasheets/SPICOBRGBW.pdf" }, { label: "דף נתונים — PICOB RGBW", file: "datasheets/DS_SPICOB_RGBW.pdf" }],
+  "SPI NEON RGB+W": [{ label: "דף קטלוגי — SPIN12RW3", file: "datasheets/SPIN12RW3.pdf" }, { label: "דף נתונים — PIN12RW3", file: "datasheets/DS_SPIN12RW3.pdf" }],
+  "SPI NEON WH": [{ label: "דף קטלוגי — SPIN12", file: "datasheets/SPIN12.pdf" }, { label: "דף נתונים — PIN12", file: "datasheets/DS_SPIN12.pdf" }],
+  "SPI WH": [{ label: "דף קטלוגי — SPI140", file: "datasheets/SPI140.pdf" }, { label: "דף נתונים — PI140", file: "datasheets/DS_SPI140.pdf" }],
+  "ST241120R": [{ label: "דף קטלוגי — ST24112R ST24112AR", file: "datasheets/ST24112R_ST24112AR.pdf" }, { label: "דף נתונים — T24112R ST24112AR", file: "datasheets/DS_ST24112R_ST24112AR.pdf" }],
+  "ST24112AR": [{ label: "דף קטלוגי — ST24112R ST24112AR", file: "datasheets/ST24112R_ST24112AR.pdf" }, { label: "דף נתונים — T24112R ST24112AR", file: "datasheets/DS_ST24112R_ST24112AR.pdf" }],
+  "ST241200R": [{ label: "דף קטלוגי — ST24120R ST24120AR", file: "datasheets/ST24120R_ST24120AR.pdf" }, { label: "דף נתונים — T24120R ST24120AR", file: "datasheets/DS_ST24120R_ST24120AR.pdf" }],
+  "ST24120AR": [{ label: "דף קטלוגי — ST24120R ST24120AR", file: "datasheets/ST24120R_ST24120AR.pdf" }, { label: "דף נתונים — T24120R ST24120AR", file: "datasheets/DS_ST24120R_ST24120AR.pdf" }],
+  "ST24560CT": [{ label: "דף קטלוגי — ST24560CT", file: "datasheets/ST24560CT.pdf" }, { label: "דף נתונים — T24560CT", file: "datasheets/DS_ST24560CT.pdf" }],
+  "ST24600RG": [{ label: "דף קטלוגי — ST2460RG ST2460ASR ST2460ISR", file: "datasheets/ST2460RG_ST2460ASR_ST2460ISR.pdf" }, { label: "דף נתונים — T2460RG ST2460ASR ST2460ISR", file: "datasheets/DS_ST2460RG_ST2460ASR_ST2460ISR.pdf" }],
+  "ST2460ASR": [{ label: "דף קטלוגי — ST2460RG ST2460ASR ST2460ISR", file: "datasheets/ST2460RG_ST2460ASR_ST2460ISR.pdf" }, { label: "דף נתונים — T2460RG ST2460ASR ST2460ISR", file: "datasheets/DS_ST2460RG_ST2460ASR_ST2460ISR.pdf" }],
+  "ST2460ISR": [{ label: "דף קטלוגי — ST2460RG ST2460ASR ST2460ISR", file: "datasheets/ST2460RG_ST2460ASR_ST2460ISR.pdf" }, { label: "דף נתונים — T2460RG ST2460ASR ST2460ISR", file: "datasheets/DS_ST2460RG_ST2460ASR_ST2460ISR.pdf" }],
 };
 
 /* ── PRODUCT MODAL ── */
@@ -31577,8 +31692,8 @@ const ProductModal = ({ prod, onClose, onAddToCart }) => {
           })()}
 
           <div className="p-6 space-y-6">
-            {/* Description */}
-            {prod.desc && (
+            {/* Description — hidden for סטריפ LED (desc used only for spec parsing) */}
+            {prod.desc && prod.category !== 'סטריפ LED' && (
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-muted mb-2">תיאור</p>
                 <p className="text-ink-soft text-sm leading-relaxed">{prod.desc}</p>
