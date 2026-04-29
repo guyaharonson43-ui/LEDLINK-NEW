@@ -30692,12 +30692,9 @@ const TopBar = () => (
       <a href="tel:086326059" className="flex items-center gap-1.5 hover:text-gold-light transition-colors">
         {Ico.phone} 08-632-6059
       </a>
-      <a href="mailto:office@ledlink.co.il" className="flex items-center gap-1.5 hover:text-gold-light transition-colors">
-        {Ico.mail} office@ledlink.co.il
-      </a>
     </div>
     <div className="flex items-center gap-1.5 text-gray-400">
-      {Ico.loc} <span>רחובות | א׳–ה׳ 08:00–17:00</span>
+      {Ico.loc} <span>רחובות | א׳–ה׳ 07:00–15:00</span>
     </div>
   </div>
 );
@@ -30952,7 +30949,7 @@ const Hero = ({ onHome, onPro }) => (
     <div className="absolute inset-0 bg-gradient-to-l from-ink/95 via-ink/65 to-ink/10" />
 
     <div className="relative z-10 max-w-7xl mx-auto px-8 w-full pt-6 sm:pt-0">
-      <div className="max-w-2xl pb-[120px] sm:pb-0">
+      <div className="max-w-2xl pb-[160px] sm:pb-0">
         <span className="section-label text-gold-light" style={{fontSize:'14px'}}>חנות המפעל לתאורת LED · רחובות</span>
         <h1 className="font-heading font-black text-3xl sm:text-5xl md:text-6xl text-white leading-tight mt-2 mb-5">
           תאורה שאדריכלים<br/>
@@ -31358,6 +31355,11 @@ const BrandsSection = () => (
             </span>
           </div>
         ))}
+      </div>
+      <div className="text-center mt-10">
+        <a href="#contact" className="inline-flex items-center gap-2 text-ink hover:text-gold transition-colors text-sm font-heading font-bold border-b border-ink/20 hover:border-gold pb-0.5">
+          רוצים לעבוד יחד? דברו איתנו ←
+        </a>
       </div>
     </div>
   </section>
@@ -34799,7 +34801,7 @@ const ContactSection = () => (
           <div>
             <p className="text-[11px] font-bold uppercase tracking-widest text-gold mb-5">שעות פעילות</p>
             <div className="text-sm text-gray-300 space-y-1.5">
-              <div className="flex justify-between gap-4"><span>ראשון – חמישי</span><span className="text-white font-semibold">08:00 – 17:00</span></div>
+              <div className="flex justify-between gap-4"><span>ראשון – חמישי</span><span className="text-white font-semibold">07:00 – 15:00</span></div>
               <div className="flex justify-between gap-4"><span>שישי</span><span className="text-white font-semibold">08:00 – 13:00</span></div>
               <div className="flex justify-between gap-4"><span>שבת</span><span className="text-red-400 font-semibold">סגור</span></div>
             </div>
