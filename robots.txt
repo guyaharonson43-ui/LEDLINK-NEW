@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Block irrelevant files from crawling
+Disallow: /*.py$
+Disallow: /*.mjs$
+Disallow: /*.json$
+
 Sitemap: https://www.ledlink.co.il/sitemap.xml

@@ -43,22 +43,32 @@
   <meta name="twitter:image" content="https://www.ledlink.co.il/og-image.jpg">
 
   <!-- Local Business structured data -->
+  <!-- Schema: LocalBusiness -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "Store"],
     "@id": "https://www.ledlink.co.il/#business",
     "name": "LedLink",
-    "description": "חנות המפעל לתאורת LED מקצועית — גופי תאורה, פרופילים, סטריפ LED ודרייברים",
+    "alternateName": "LEDLink",
+    "description": "חנות המפעל לתאורת LED מקצועית ברחובות — גופי תאורה, פרופילים, סטריפ LED ודרייברים. ייצור כחול-לבן, מלאי מדף, ייעוץ הנדסי. 15 שנות ניסיון.",
     "url": "https://www.ledlink.co.il",
+    "logo": "https://www.ledlink.co.il/og-image.jpg",
+    "image": "https://www.ledlink.co.il/rooms/hero-living.png",
     "telephone": "+972-8-632-6059",
     "email": "office@ledlink.co.il",
-    "image": "https://www.ledlink.co.il/rooms/hero-living.png",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "רחובות",
+      "addressRegion": "מחוז המרכז",
       "addressCountry": "IL"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 31.8928,
+      "longitude": 34.8113
+    },
+    "hasMap": "https://maps.google.com/?q=LedLink+רחובות",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -67,7 +77,39 @@
         "closes": "17:00"
       }
     ],
-    "priceRange": "$$"
+    "priceRange": "$$",
+    "currenciesAccepted": "ILS",
+    "paymentAccepted": "Cash, Credit Card",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Israel"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "קטלוג מוצרי תאורת LED",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "פרופילי LED"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "סטריפ LED"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "דרייברים לתאורה"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "גופי תאורה LED"}}
+      ]
+    }
+  }
+  </script>
+
+  <!-- Schema: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.ledlink.co.il/#website",
+    "url": "https://www.ledlink.co.il",
+    "name": "LedLink — פתרונות תאורה מקצועיים",
+    "description": "חנות המפעל לתאורת LED מקצועית ברחובות",
+    "inLanguage": "he",
+    "publisher": {
+      "@id": "https://www.ledlink.co.il/#business"
+    }
   }
   </script>
 
