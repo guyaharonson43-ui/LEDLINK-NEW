@@ -30927,7 +30927,7 @@ const Hero = ({ onHome, onPro }) => (
 
     {/* Stats bar */}
     <div className="absolute bottom-0 right-0 left-0 bg-white/5 backdrop-blur-sm border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-8 py-4 flex justify-between text-white text-sm">
+      <div className="max-w-7xl mx-auto px-8 py-4 grid grid-cols-2 gap-x-6 gap-y-3 sm:flex sm:justify-between text-white text-sm">
         {[['15+','שנות ניסיון בשטח'],['מלאי מדף','לאיסוף מיידי'],['ייצור לפי דרישה','תוך שעות'],['1000+','פרויקטים הושלמו']].map(([n,l])=>(
           <div key={l} className="flex flex-col gap-0.5">
             <span className="font-heading font-black text-2xl text-gold-light leading-none">{n}</span>
@@ -31619,13 +31619,13 @@ const AddToCartBtn = ({ onClick }) => {
     setTimeout(() => { setStatus('done'); onClick(); setTimeout(() => setStatus('idle'), 1400); }, 280);
   };
   if (status === 'done') return (
-    <button className="w-full py-2.5 bg-gold text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 rounded">
+    <button className="w-full min-h-[44px] py-2.5 bg-gold text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 rounded">
       {Ico.check} נשלח ✓
     </button>
   );
   return (
     <button onClick={handle}
-      className="w-full py-2.5 border border-ink text-ink text-xs font-bold uppercase tracking-wider hover:bg-ink hover:text-white transition-colors rounded flex items-center justify-center gap-2">
+      className="w-full min-h-[44px] py-2.5 border border-ink text-ink text-xs font-bold uppercase tracking-wider hover:bg-ink hover:text-white transition-colors rounded flex items-center justify-center gap-2">
       {status === 'loading' ? <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"/> : 'קבל הצעת מחיר'}
     </button>
   );
@@ -32298,7 +32298,7 @@ function getStripMeta(p) {
 /* ── FILTER CHIP ── */
 const FilterChip = ({ label, active, onClick }) => (
   <button onClick={onClick}
-    className={`text-xs font-bold px-3 py-1.5 rounded border transition-all ${active ? 'bg-ink text-white border-ink' : 'bg-white text-muted border-border hover:border-ink-soft hover:text-ink'}`}>
+    className={`text-xs font-bold px-3 py-2.5 min-h-[40px] rounded border transition-all ${active ? 'bg-ink text-white border-ink' : 'bg-white text-muted border-border hover:border-ink-soft hover:text-ink'}`}>
     {label}
   </button>
 );
@@ -32679,12 +32679,12 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
           <div className="flex rounded-lg border border-border overflow-hidden text-sm font-bold">
             <button
               onClick={() => { setProMode(false); setCat('הכל'); resetFilters(); }}
-              className={`px-4 py-2 transition-colors ${!proMode ? 'bg-ink text-white' : 'bg-white text-muted hover:text-ink'}`}>
+              className={`px-4 py-2 min-h-[44px] transition-colors ${!proMode ? 'bg-ink text-white' : 'bg-white text-muted hover:text-ink'}`}>
               🏠 לקוח פרטי
             </button>
             <button
               onClick={() => { setProMode(true); setCat('הכל'); resetFilters(); }}
-              className={`px-4 py-2 border-r border-border transition-colors ${proMode ? 'bg-slate-900 text-gold' : 'bg-white text-muted hover:text-ink'}`}>
+              className={`px-4 py-2 min-h-[44px] border-r border-border transition-colors ${proMode ? 'bg-slate-900 text-gold' : 'bg-white text-muted hover:text-ink'}`}>
               ⚙ איש מקצוע
             </button>
           </div>
@@ -32696,7 +32696,7 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
             {['הכל', ...(proMode ? CATS_PRO_FIRST : CATS_CONSUMER_FIRST)].map(c => (
               <button key={c}
                 onClick={() => { setCat(c); resetFilters(); if (PRO_CATS.has(c)) setProMode(true); }}
-                className={`shrink-0 px-4 py-2 text-sm font-bold rounded border transition-colors whitespace-nowrap
+                className={`shrink-0 px-4 py-2 min-h-[44px] text-sm font-bold rounded border transition-colors whitespace-nowrap
                   ${cat === c
                     ? (proMode ? 'bg-slate-900 text-gold border-slate-700' : 'bg-ink text-white border-ink')
                     : (proMode ? 'bg-white text-slate-600 border-border hover:border-slate-700 hover:text-slate-900' : 'bg-white text-ink border-border hover:border-gold hover:text-gold')}`}>
