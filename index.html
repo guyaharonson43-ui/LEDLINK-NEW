@@ -113,6 +113,29 @@
   }
   </script>
 
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"איפה אתם נמצאים?","acceptedAnswer":{"@type":"Answer","text":"אנחנו ברחוב יצירה 19, רחובות. ניתן להגיע אלינו ישירות למפעל לייעוץ, לאיסוף סחורה או לצפייה בדוגמאות."}},
+      {"@type":"Question","name":"מה שעות הפעילות?","acceptedAnswer":{"@type":"Answer","text":"ימים א׳–ה׳, 07:00–15:00."}},
+      {"@type":"Question","name":"האם אפשר לקנות ישירות מהמפעל?","acceptedAnswer":{"@type":"Answer","text":"כן — אנחנו חנות מפעל. קונים ישירות מאיתנו ללא מתווך, במחירי יצרן."}},
+      {"@type":"Question","name":"האם אתם מוכרים גם ליחידים או רק לעסקים?","acceptedAnswer":{"@type":"Answer","text":"מוכרים לכולם — לקוחות פרטיים, קבלנים, מעצבי פנים ואדריכלים. אין כמות מינימום."}},
+      {"@type":"Question","name":"מה ההבדל בין 12V ל-24V ל-48V?","acceptedAnswer":{"@type":"Answer","text":"מתח גבוה יותר מאפשר ריצות ארוכות יותר ללא נפילת מתח. 12V עד 5 מטר, 24V עד 10 מטר, 48V לריצות ארוכות במיוחד."}},
+      {"@type":"Question","name":"מה זה COB ומה זה SMD — מה עדיף?","acceptedAnswer":{"@type":"Answer","text":"SMD הם נקודות אור נפרדות. COB הוא רצועה אחידה — אור רך ורצוף, מושלם לגבס ולתאורה עיצובית."}},
+      {"@type":"Question","name":"מה ההבדל בין IP20 ל-IP65 ל-IP67?","acceptedAnswer":{"@type":"Answer","text":"IP20 — סביבה יבשה. IP65 — עמיד בפני ריסוס מים. IP67 — עמיד בשקיעה במים."}},
+      {"@type":"Question","name":"מה זה דרייבר ולמה צריך אותו?","acceptedAnswer":{"@type":"Answer","text":"דרייבר הוא ספק הכוח של הסטריפ — מוריד מתח רשת (230V) למתח הנדרש (12V/24V/48V)."}},
+      {"@type":"Question","name":"האם יש כמות מינימום להזמנה?","acceptedAnswer":{"@type":"Answer","text":"לא — אנחנו מוכרים גם פריט אחד וגם כמויות גדולות."}},
+      {"@type":"Question","name":"מה זמן האספקה?","acceptedAnswer":{"@type":"Answer","text":"בדרך כלל עד 48 שעות. מלאי מדף זמין לאיסוף מיידי."}},
+      {"@type":"Question","name":"האם נדרש חשמלאי מוסמך?","acceptedAnswer":{"@type":"Answer","text":"חיבור לרשת החשמל (230V) חייב להתבצע על ידי חשמלאי מוסמך. חיבור סטריפ לדרייבר קיים ניתן לביצוע עצמאי."}},
+      {"@type":"Question","name":"האם אפשר לחתוך סטריפ LED?","acceptedAnswer":{"@type":"Answer","text":"כן — ניתן לחתוך בנקודות החיתוך המסומנות על הסטריפ, בדרך כלל כל 5 ס״מ."}},
+      {"@type":"Question","name":"מה אורך החיים של LED?","acceptedAnswer":{"@type":"Answer","text":"מוצרי LEDLink מדורגים ל-50,000 שעות פעולה ומעלה — כ-15 שנה בשימוש יומי רגיל."}}
+    ]
+  }
+  </script>
+
   <!-- ══ ANALYTICS ══════════════════════════════════════════════════════
        החלף את המזהים המסומנים ב-XXXXXXX במזהים האמיתיים שלך.
        ════════════════════════════════════════════════════════════════ -->
@@ -34612,6 +34635,119 @@ const CookiesBanner = () => {
   );
 };
 
+/* ── FAQ ── */
+const FAQ_DATA = [
+  {
+    cat: 'על LEDLink',
+    icon: '🏭',
+    items: [
+      { q: 'איפה אתם נמצאים?', a: 'אנחנו ברחוב יצירה 19, רחובות. ניתן להגיע אלינו ישירות למפעל לייעוץ, לאיסוף סחורה או לצפייה בדוגמאות.' },
+      { q: 'מה שעות הפעילות?', a: 'ימים א׳–ה׳, 07:00–15:00.' },
+      { q: 'האם אפשר לקנות ישירות מהמפעל?', a: 'כן — אנחנו חנות מפעל. קונים ישירות מאיתנו ללא מתווך, במחירי יצרן.' },
+      { q: 'האם אתם מוכרים גם ליחידים או רק לעסקים?', a: 'מוכרים לכולם — לקוחות פרטיים, קבלנים, מעצבי פנים ואדריכלים. אין כמות מינימום.' },
+      { q: 'כמה זמן אתם בתחום?', a: 'מעל 15 שנה בתחום תאורת LED מקצועית.' },
+    ]
+  },
+  {
+    cat: 'מוצרים ובחירה',
+    icon: '💡',
+    items: [
+      { q: 'מה ההבדל בין 12V ל-24V ל-48V?', a: 'מתח גבוה יותר מאפשר ריצות ארוכות יותר ללא נפילת מתח. 12V מתאים לריצות עד 5 מטר, 24V עד 10 מטר, 48V לריצות ארוכות במיוחד. נשמח לייעץ לפי הפרויקט שלך.' },
+      { q: 'מה זה COB ומה זה SMD — מה עדיף?', a: 'SMD הם נקודות אור נפרדות הנראות בבירור. COB הוא רצועה אחידה ללא נקודות — אור רך ורצוף, מושלם לגבס ולתאורה עיצובית. לבית — רוב הלקוחות מעדיפים COB.' },
+      { q: 'איך בוחרים פרופיל LED לגבס?', a: 'תלוי בעומק הגומחה וכיוון האור הרצוי — שקוע, פינתי, צמוד. מוזמנים להביא שרטוט או תמונה ונעזור לבחור את הפרופיל המדויק.' },
+      { q: 'מה ההבדל בין IP20 ל-IP65 ל-IP67?', a: 'IP20 — סביבה יבשה (סלון, חדר שינה). IP65 — עמיד בפני ריסוס מים (מקלחת, מטבח). IP67 — עמיד בשקיעה במים (חוץ, בריכה).' },
+      { q: 'מה זה דרייבר ולמה צריך אותו?', a: 'דרייבר הוא ספק הכוח של הסטריפ — הוא מוריד את מתח הרשת (230V) למתח הנדרש (12V/24V/48V). בלי דרייבר מתאים — הסטריפ לא יעבוד נכון.' },
+      { q: 'האם אפשר לעמעם כל סטריפ LED?', a: 'לא כל סטריפ מתאים לעמעום. יש לוודא שהסטריפ מסומן כ-Dimmable וגם שהדרייבר תומך בעמעום. נשמח לייעץ.' },
+    ]
+  },
+  {
+    cat: 'מחיר והזמנה',
+    icon: '💰',
+    items: [
+      { q: 'כיצד מקבלים הצעת מחיר?', a: 'דרך WhatsApp, טלפון, או ביקור במפעל. נשלח הצעה תוך שעות.' },
+      { q: 'האם יש כמות מינימום להזמנה?', a: 'לא — אנחנו מוכרים גם פריט אחד וגם כמויות גדולות.' },
+      { q: 'מה זמן האספקה?', a: 'בדרך כלל עד 48 שעות. מלאי מדף זמין לאיסוף מיידי.' },
+      { q: 'האם אפשר לאסוף ממפעל באותו יום?', a: 'כן — פריטים שיש במלאי ניתן לאסוף ביום ההזמנה בשעות הפעילות.' },
+    ]
+  },
+  {
+    cat: 'התקנה וטכני',
+    icon: '🔧',
+    items: [
+      { q: 'האם אתם גם מתקינים?', a: 'כן — אנחנו מציעים שירות התקנה. צרו קשר לפרטים ותיאום.' },
+      { q: 'האם נדרש חשמלאי מוסמך?', a: 'חיבור לרשת החשמל (230V) חייב להתבצע על ידי חשמלאי מוסמך. חיבור סטריפ לדרייבר קיים ניתן לביצוע עצמאי.' },
+      { q: 'האם אפשר לחתוך סטריפ LED?', a: 'כן — ניתן לחתוך בנקודות החיתוך המסומנות על הסטריפ, בדרך כלל כל 5 ס״מ.' },
+      { q: 'מה אורך החיים של LED?', a: 'מוצרי LEDLink מדורגים ל-50,000 שעות פעולה ומעלה — כ-15 שנה בשימוש יומי רגיל.' },
+    ]
+  },
+  {
+    cat: 'ייצור מותאם אישית',
+    icon: '🏗️',
+    items: [
+      { q: 'מה זה ייצור מותאם אישית ב-LEDLink?', a: 'LEDLink מייצרת פרופילי LED בצורות, אורכות וסיומות מותאמות לפרויקט — כולל חריטה, ציפוי ועיצוב לפי שרטוט.' },
+      { q: 'מה המינימום להזמנה מותאמת אישית?', a: 'תלוי בסוג המוצר. נשמח לדון בפרטים ולגבש הצעה מותאמת לצרכיכם.' },
+      { q: 'כמה זמן לוקח ייצור מותאם?', a: 'בדרך כלל 7–14 ימי עסקים, תלוי בסוג המוצר והכמות.' },
+    ]
+  },
+];
+
+const FaqItem = ({ q, a, open, onClick }) => (
+  <div className="border-b border-gray-100 last:border-0">
+    <button
+      className="w-full flex items-center justify-between gap-4 py-4 text-right text-ink font-medium hover:text-brand transition-colors"
+      onClick={onClick}
+      aria-expanded={open}
+    >
+      <span className="text-sm md:text-base">{q}</span>
+      <svg
+        className={`flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+        fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </button>
+    {open && (
+      <div className="pb-4 text-ink-soft text-sm md:text-base leading-relaxed">
+        {a}
+      </div>
+    )}
+  </div>
+);
+
+const FaqModal = ({ onClose }) => {
+  const [openKey, setOpenKey] = React.useState(null);
+  const toggle = key => setOpenKey(prev => prev === key ? null : key);
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, []);
+  return (
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 p-4"
+      onClick={e => e.target === e.currentTarget && onClose()}>
+      <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div className="flex justify-between items-center p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+          <h2 className="font-heading font-black text-2xl text-ink">שאלות נפוצות</h2>
+          <button onClick={onClose} aria-label="סגור" className="text-gray-400 hover:text-ink transition-colors p-1">✕</button>
+        </div>
+        <div className="p-6 space-y-6">
+          {FAQ_DATA.map(cat => (
+            <div key={cat.cat} className="bg-bg-warm rounded-2xl p-5">
+              <h3 className="font-heading font-bold text-lg text-brand mb-3 flex items-center gap-2">
+                <span>{cat.icon}</span><span>{cat.cat}</span>
+              </h3>
+              {cat.items.map((item, i) => {
+                const key = `${cat.cat}-${i}`;
+                return <FaqItem key={key} q={item.q} a={item.a} open={openKey === key} onClick={() => toggle(key)} />;
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ContactSection = () => (
   <section id="contact" className="bg-ink text-white">
     {/* Info grid */}
@@ -34679,6 +34815,9 @@ const ContactSection = () => (
             <span className="text-white/20">|</span>
             <button onClick={() => window.dispatchEvent(new CustomEvent('open-accessibility'))}
               className="hover:text-gold-light transition-colors">הצהרת נגישות</button>
+            <span className="text-white/20">|</span>
+            <button onClick={() => window.dispatchEvent(new CustomEvent('open-faq'))}
+              className="hover:text-gold-light transition-colors">שאלות נפוצות</button>
           </div>
         </div>
       </div>
@@ -34911,6 +35050,7 @@ const App = () => {
   const [showGuides, setShowGuides]   = useState(false);
   const [showTerms, setShowTerms]     = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showFaq, setShowFaq]         = useState(false);
 
   useEffect(() => {
     if (window.__PRODUCTS__) {
@@ -34936,13 +35076,16 @@ const App = () => {
   useEffect(() => {
     const onTerms  = () => setShowTerms(true);
     const onPrivacy = () => setShowPrivacy(true);
+    const onFaq    = () => setShowFaq(true);
     const onA11y   = () => window.dispatchEvent(new CustomEvent('a11y-open-statement'));
     window.addEventListener('open-terms', onTerms);
     window.addEventListener('open-privacy', onPrivacy);
+    window.addEventListener('open-faq', onFaq);
     window.addEventListener('open-accessibility', onA11y);
     return () => {
       window.removeEventListener('open-terms', onTerms);
       window.removeEventListener('open-privacy', onPrivacy);
+      window.removeEventListener('open-faq', onFaq);
       window.removeEventListener('open-accessibility', onA11y);
     };
   }, []);
@@ -35016,6 +35159,7 @@ const App = () => {
       {searchOpen && <SearchModal products={products} onClose={() => setSearchOpen(false)} onSelect={p => { setSelected(p); setSearchOpen(false); }}/>}
       {showTerms   && <TermsModal   onClose={() => setShowTerms(false)}/>}
       {showPrivacy && <PrivacyModal onClose={() => setShowPrivacy(false)}/>}
+      {showFaq     && <FaqModal     onClose={() => setShowFaq(false)}/>}
       <CookiesBanner/>
 
       </div> {/* סגירת a11y-wrap */}
