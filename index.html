@@ -30986,8 +30986,9 @@ const Hero = ({ onHome, onPro }) => (
             <span className="text-xs text-white/70 font-light">גלישה לפי חדרים וסגנון</span>
           </button>
           <button onClick={onPro}
-            className="group flex flex-col items-center gap-1 border-2 border-white/40 hover:border-gold hover:bg-white/5 text-white px-8 py-4 transition-colors text-right w-full sm:w-auto">
-            <span className="font-heading font-black text-base tracking-wide">לצפייה בקטלוג המוצרים</span>
+            className="group flex items-center gap-2 text-white/75 hover:text-white transition-colors px-2 py-4 text-right w-full sm:w-auto">
+            <span className="font-heading font-bold text-sm tracking-wide border-b border-white/30 group-hover:border-white transition-colors pb-0.5">לצפייה בקטלוג המוצרים</span>
+            <span className="text-xs opacity-60 group-hover:opacity-100 transition-opacity">←</span>
           </button>
         </div>
       </div>
@@ -35141,9 +35142,9 @@ const App = () => {
         <Hero onHome={handleHome} onPro={handlePro}/>
         <TrustBar/>
         <FactorySection/>
+        <ProjectsSection/>
         <AboutSection/>
         <TestimonialsSection/>
-        <ProjectsSection/>
         <BrandsSection/>
 
         {siteMode === 'home'
