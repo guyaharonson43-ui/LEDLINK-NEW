@@ -30630,7 +30630,8 @@ window.__PRODUCTS__ = [
 const { useState, useEffect, useRef, useMemo } = React;
 
 /* ── FEATURE FLAGS — שנה ל-false כדי להסתיר ── */
-const SHOW_TRUST_BAR = true;   /* סרגל אמון: ייצור מקומי · LAB TESTED · ISO 9001 */
+const SHOW_TRUST_BAR    = true;   /* סרגל אמון: ייצור מקומי · LAB TESTED · ISO 9001 */
+const SHOW_TESTIMONIALS = false;  /* ביקורות לקוחות — להפעיל כשיהיו ביקורות אמיתיות */
 
 /* ── helpers ── */
 function cleanName(s) {
@@ -31177,16 +31178,6 @@ const TrustBar = () => !SHOW_TRUST_BAR ? null : (
 
       <div className="w-px h-4 bg-white/12 hidden sm:block"/>
 
-      {/* Lab Tested */}
-      <div className="flex items-center gap-2.5">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A566" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0a3 3 0 1 0 6 0m-6 0h6m-6 0H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-3"/>
-        </svg>
-        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/75">LAB TESTED V2</span>
-      </div>
-
-      <div className="w-px h-4 bg-white/12 hidden sm:block"/>
-
       {/* ISO */}
       <div className="flex items-center gap-2.5">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A566" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -31276,7 +31267,7 @@ const FactorySection = () => (
       <div className="border-t border-white/10 pt-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
         {[
           ['15+', 'שנות ניסיון בענף'],
-          ['500+', 'פרויקטים הושלמו'],
+          ['1,000+', 'פרויקטים הושלמו'],
           ['48h', 'זמן אספקה ממוצע'],
           ['QLT', 'שותף רשמי — איטליה'],
         ].map(([val, label]) => (
@@ -31294,44 +31285,31 @@ const FactorySection = () => (
 /* ── ABOUT SECTION ── */
 const AboutSection = () => (
   <section id="about" className="py-20 bg-bg-soft">
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <span className="section-label">הסיפור שלנו</span>
-          <h2 className="font-heading font-black text-4xl text-ink mb-6 leading-tight">
-            יצרנים ישראלים<br/>עם ראייה עולמית
-          </h2>
-          <p className="text-ink-soft leading-relaxed mb-5">
-            התחלנו מסדנה קטנה ברחובות, עם ראש ענייני אחד: לא למכור תאורה — אלא לפתור בעיות. 15 שנה אחר כך, אנחנו מאחורי אלפי חללים ברחבי הארץ. קבלנים שמתקשרים ביום שישי בבוקר מכירים את המספר שלנו בעל פה.
-          </p>
-          <p className="text-ink-soft leading-relaxed mb-8">
-            אנחנו לא מפיצים — אנחנו היצרן. מפרופיל LED ועד ספק מתח, הכל יוצא ישירות מאצלנו אליך, עם ידע מלא על כל פריט. מה שחוסך לך כסף, זמן ועצבים בשטח.
-          </p>
-          <div className="grid grid-cols-2 gap-5">
-            {[['אחריות מלאה','אחריות יצרן על כל המוצרים'],['ייעוץ חינם','צוות מהנדסים לרשותך'],['אספקה מהירה','מלאי קיים ברוב הפריטים'],['QLT Partner','נציג רשמי של QLT האיטלקית']].map(([t,d])=>(
-              <div key={t} className="flex gap-3">
-                <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center shrink-0 mt-0.5">
-                  {Ico.check}
-                </div>
-                <div>
-                  <p className="font-bold text-ink text-sm">{t}</p>
-                  <p className="text-muted text-xs mt-0.5">{d}</p>
-                </div>
-              </div>
-            ))}
+    <div className="max-w-5xl mx-auto px-6">
+      <div className="text-center mb-12">
+        <span className="section-label">הסיפור שלנו</span>
+        <h2 className="font-heading font-black text-4xl text-ink mt-2 leading-tight">
+          יצרנים ישראלים עם ראייה עולמית
+        </h2>
+      </div>
+      <div className="grid md:grid-cols-2 gap-10 mb-12">
+        <p className="text-ink-soft leading-relaxed text-base">
+          התחלנו מסדנה קטנה ברחובות, עם ראש ענייני אחד: לא למכור תאורה — אלא לפתור בעיות. 15 שנה אחר כך, אנחנו מאחורי אלפי חללים ברחבי הארץ. קבלנים שמתקשרים ביום שישי בבוקר מכירים את המספר שלנו בעל פה.
+        </p>
+        <p className="text-ink-soft leading-relaxed text-base">
+          אנחנו לא מפיצים — אנחנו היצרן. מפרופיל LED ועד ספק מתח, הכל יוצא ישירות מאצלנו אליך, עם ידע מלא על כל פריט. מה שחוסך לך כסף, זמן ועצבים בשטח.
+        </p>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        {[['אחריות מלאה','אחריות יצרן על כל המוצרים'],['ייעוץ חינם','צוות מהנדסים לרשותך'],['אספקה מהירה','מלאי קיים ברוב הפריטים'],['QLT Partner','נציג רשמי של QLT האיטלקית']].map(([t,d])=>(
+          <div key={t} className="bg-white rounded-xl p-5 border border-border text-center">
+            <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-3">
+              {Ico.check}
+            </div>
+            <p className="font-bold text-ink text-sm mb-1">{t}</p>
+            <p className="text-muted text-xs leading-relaxed">{d}</p>
           </div>
-        </div>
-        <div className="grid grid-cols-2 gap-3">
-          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=400&q=80"
-               className="rounded-lg object-cover h-52 w-full" alt="showroom" loading="lazy"/>
-          <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=400&q=80"
-               className="rounded-lg object-cover h-52 w-full mt-8" alt="products" loading="lazy"
-               onError={e => { e.target.src='https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=400&q=80'; }}/>
-          <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=400&q=80"
-               className="rounded-lg object-cover h-52 w-full" alt="office" loading="lazy"/>
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80"
-               className="rounded-lg object-cover h-52 w-full mt-8" alt="lights" loading="lazy"/>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -31364,7 +31342,7 @@ const BrandsSection = () => (
 );
 
 /* ── TESTIMONIALS ── */
-const TestimonialsSection = () => (
+const TestimonialsSection = () => !SHOW_TESTIMONIALS ? null : (
   <section className="py-20 bg-bg-warm">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center mb-14">
