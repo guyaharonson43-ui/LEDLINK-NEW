@@ -30877,12 +30877,12 @@ const Hero = ({ onHome, onPro }) => (
         {/* Dual CTA */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button onClick={onHome}
-            className="group flex flex-col items-center gap-1 bg-gold hover:bg-gold-dark text-white px-8 py-4 transition-colors text-right">
+            className="group flex flex-col items-center gap-1 bg-gold hover:bg-gold-dark text-white px-8 py-4 transition-colors text-right w-full sm:w-auto">
             <span className="font-heading font-black text-base tracking-wide">מחפש לבית שלי</span>
             <span className="text-xs text-white/70 font-light">גלישה לפי חדרים וסגנון</span>
           </button>
           <button onClick={onPro}
-            className="group flex flex-col items-center gap-1 border-2 border-white/40 hover:border-gold hover:bg-white/5 text-white px-8 py-4 transition-colors text-right">
+            className="group flex flex-col items-center gap-1 border-2 border-white/40 hover:border-gold hover:bg-white/5 text-white px-8 py-4 transition-colors text-right w-full sm:w-auto">
             <span className="font-heading font-black text-base tracking-wide">לצפייה בקטלוג המוצרים</span>
           </button>
         </div>
@@ -32652,7 +32652,7 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
 
         {/* Category tabs */}
         <div className="relative mb-8">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex gap-2 overflow-x-auto no-scroll pb-1 sm:flex-wrap">
             {['הכל', ...(proMode ? CATS_PRO_FIRST : CATS_CONSUMER_FIRST)].map(c => (
               <button key={c}
                 onClick={() => { setCat(c); resetFilters(); if (PRO_CATS.has(c)) setProMode(true); }}
@@ -32664,8 +32664,10 @@ const Catalog = ({ products, onAddToCart, onSelect, initCat }) => {
               </button>
             ))}
           </div>
-          {/* fade edge */}
-          <div className="absolute top-0 left-0 h-[calc(100%-12px)] w-10 bg-gradient-to-r from-bg-soft to-transparent pointer-events-none"/>
+          {/* fade — left edge (always) */}
+          <div className="absolute top-0 left-0 bottom-1 w-10 bg-gradient-to-r from-bg-soft to-transparent pointer-events-none"/>
+          {/* fade — right edge (mobile hint for scroll) */}
+          <div className="absolute top-0 right-0 bottom-1 w-8 bg-gradient-to-l from-bg-soft to-transparent pointer-events-none sm:hidden"/>
         </div>
 
         {/* Filter calculators */}
