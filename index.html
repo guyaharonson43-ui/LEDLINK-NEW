@@ -108,7 +108,7 @@
     "url": "https://www.ledlink.co.il",
     "name": "LedLink — פתרונות תאורה מקצועיים",
     "description": "חנות המפעל לתאורת LED מקצועית ברחובות",
-    "inLanguage": "he",
+    "inLanguage": "he-IL",
     "publisher": {
       "@id": "https://www.ledlink.co.il/#business"
     }
@@ -397,10 +397,10 @@
       flex: 1.4; display: flex; align-items: center; justify-content: center; gap: 7px;
       padding: 13px 8px; border-radius: 12px;
       font-family: 'Heebo', sans-serif; font-weight: 800; font-size: 15px;
-      background: #25D366; color: #fff;
+      background: #25D366; color: #064E3B;
       text-decoration: none; -webkit-tap-highlight-color: transparent; transition: background 0.15s;
     }
-    .mobile-cta-wa:active { background: #1ebe5d; }
+    .mobile-cta-wa:active { background: #1ebe5d; color: #064E3B; }
 
     @media (max-width: 1023px) {
       .mobile-cta-bar { display: flex; }
@@ -30683,7 +30683,7 @@ const Header = ({ cartCount, onCartOpen, onNavSelect, onNavClick, onSearchOpen }
 
         {/* Logo */}
         <a href="#" className="font-heading font-black text-2xl tracking-widest text-ink uppercase select-none">
-          LED<span className="text-gold">LINK</span>
+          LED<span className="text-gold-dark">LINK</span>
         </a>
 
         {/* Desktop Nav */}
@@ -30753,7 +30753,7 @@ const Header = ({ cartCount, onCartOpen, onNavSelect, onNavClick, onSearchOpen }
       <div className={`nav-drawer ${mobileOpen ? 'open' : ''}`}
            role="dialog" aria-modal="true" aria-label="תפריט ניווט" aria-hidden={!mobileOpen}>
         <div className="nav-drawer-header">
-          <span className="font-heading font-black text-xl tracking-widest text-ink uppercase">LED<span className="text-gold">LINK</span></span>
+          <span className="font-heading font-black text-xl tracking-widest text-ink uppercase">LED<span className="text-gold-dark">LINK</span></span>
           <button onClick={() => setMobileOpen(false)}
             className="p-2 rounded-full text-ink-soft hover:text-gold hover:bg-bg-soft transition-colors"
             aria-label="סגור תפריט ניווט">
@@ -30936,9 +30936,9 @@ const Hero = ({ onHome, onPro }) => (
         {/* Dual CTA */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button onClick={onHome}
-            className="group flex flex-col items-center gap-1 bg-gold hover:bg-gold-dark text-white px-8 py-4 transition-colors text-right w-full sm:w-auto">
+            className="group flex flex-col items-center gap-1 bg-gold hover:bg-gold-dark text-ink px-8 py-4 transition-colors text-right w-full sm:w-auto">
             <span className="font-heading font-black text-base tracking-wide">מחפש לבית שלי</span>
-            <span className="text-xs text-white/70 font-light">גלישה לפי חדרים וסגנון</span>
+            <span className="text-xs text-ink/60 font-light">גלישה לפי חדרים וסגנון</span>
           </button>
           <button onClick={onPro}
             className="group flex items-center gap-2 text-white/75 hover:text-white transition-colors px-2 py-4 text-right w-full sm:w-auto">
@@ -31179,8 +31179,8 @@ const FactorySection = () => (
       <div className="text-center mb-14">
         <span className="inline-block bg-gold/20 text-gold text-[11px] font-bold tracking-[0.18em] uppercase px-5 py-2 rounded-full mb-7">למה לדלינק?</span>
         <h2 className="font-heading font-black text-4xl md:text-5xl text-white leading-tight mb-5">
-          בוא/י אלינו, שתה/י קפה —<br/>
-          <span className="text-gold">נייצר לך בינתיים.</span>
+          בואו אלינו, שתו קפה —<br/>
+          <span className="text-gold">נייצר לכם בינתיים.</span>
         </h2>
         <p className="text-white/55 text-lg max-w-2xl mx-auto leading-relaxed">
           חנות המפעל שלנו: מהירות אספקה יוצאת דופן, ייצור לפי דרישה תוך ימים, ואיכות חומרים שמדברת בעד עצמה.
@@ -32242,7 +32242,7 @@ const ProductCard = ({ prod, idx = 0, onAddToCart, onSelect }) => {
       )}
     </div>
     <div className="p-4">
-      <h4 className="font-heading font-bold text-sm text-ink mb-1 leading-tight group-hover:text-gold transition-colors line-clamp-2">{prod.name}</h4>
+      <h3 className="font-heading font-bold text-sm text-ink mb-1 leading-tight group-hover:text-gold transition-colors line-clamp-2">{prod.name}</h3>
       {prod.desc && (
         <p className="text-muted text-xs leading-relaxed mb-3 line-clamp-2">{prod.desc}</p>
       )}
